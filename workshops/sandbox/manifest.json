@@ -1,0 +1,49 @@
+{
+  "workshoptitle": "Construya una interfaz innovadora de preguntas y respuestas con IA generativa y Oracle APEX",
+  "help": "livelabs-help-apex_us@oracle.com",
+	"tutorials": [
+    {
+      "title": "Introducción",
+      "filename": "../../0-intro/0-intro.md"
+    },
+    {
+      "title": "Primeros pasos",
+      "description": "Requisitos previos para LiveLabs (tenancies propiedad de Oracle). El título del laboratorio y el del menú de contenidos deben coincidir para el laboratorio de requisitos previos. Este laboratorio siempre debe ser el primero.",
+      "filename": "https://oracle-livelabs.github.io/common/labs/cloud-login/cloud-login-livelabs2.md"
+   },
+   {
+    "title": "Regístrese para obtener un workspace de APEX",
+    "filename": "../../../common-241/1-sign-up-apex/sign-up-apex-sandbox.md"
+  },
+    {
+      "title": "Laboratorio 1: Cree una aplicación APEX",
+      "filename": "../../1-create-app/1-create-app.md"
+    },
+    {
+
+      "title": "Laboratorio 2: Visualice escuelas en un mapa",
+      "filename": "../../2-schools-on-map/2-schools-on-map.md"
+    },
+    {
+      "title": "Laboratorio 3: Configure las claves de API de OCI",
+      "filename": "../../3-configure-oci/3-configure-oci.md"
+    },
+    {
+      "title": "Laboratorio 4: Cree una consulta conversacional con IA generativa",
+      "filename": "../../4-using-genai/4-using-genai.md"
+    },
+    {
+      "title": "Laboratorio 5: Genere un correo de solicitud a una escuela con IA generativa",
+      "filename": "../../5-apply-to-school/5-apply-to-school.md"
+    },
+    {
+      "title": "Laboratorio 6: Ejecute la aplicación",
+      "filename": "../../6-run-app/6-run-app.md"
+    },
+    {
+      "title": "¿Necesita ayuda?",
+      "description": "Soluciones para problemas comunes e indicaciones para recibir ayuda en vivo",
+      "filename":"https://oracle-livelabs.github.io/common/labs/need-help/need-help-livelabs.md"
+    }
+  ]
+}
