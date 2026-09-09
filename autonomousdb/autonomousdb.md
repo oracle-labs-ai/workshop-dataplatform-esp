@@ -28,7 +28,7 @@ Aprenderá a:
 
 Esta práctica guiada muestra cómo Oracle AI Database 26ai puede complementar AI Data Platform, aportando capacidades para atender cargas de trabajo de Data Warehouse de forma integrada, segura y automatizada. A lo largo del workshop aprenderá a crear y configurar esquemas y usuarios; realizar y orquestar transformaciones de datos con procedures y Oracle Scheduler; importar y configurar aplicaciones con Select AI; implementar Data Redaction para proteger información sensible, y configurar ORDS para publicar consultas sobre conjuntos de datos. El objetivo es brindar experiencia práctica con funcionalidades esenciales de Oracle AI Database 26ai en Oracle Cloud.
 
-## **1️⃣ Creación del esquema y preparación del entorno**
+## **1️⃣ Creación del esquema**
 
 Utilice la instancia de Oracle AI Database 26ai creada en la práctica guiada de OCI AI Data Platform.
 
