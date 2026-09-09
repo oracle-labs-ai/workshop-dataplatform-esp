@@ -53,9 +53,12 @@ if (typeof document !== "undefined") {
         };
 
         const syncNavigationHeight = (modalImage) => {
-            const media = modalImage.closest("#workshopModalMedia");
-            const height = modalImage.getBoundingClientRect().height;
-            if (media && height) media.style.setProperty("--modal-image-height", `${height}px`);
+            const frame = modalImage.closest("#workshopModalFrame");
+            const { height, width } = modalImage.getBoundingClientRect();
+            if (!frame) return;
+
+            if (height) frame.style.setProperty("--modal-image-height", `${height}px`);
+            if (width) frame.style.setProperty("--modal-image-width", `${width}px`);
         };
 
         const observeNavigationHeight = (modalImage) => {
