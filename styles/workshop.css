@@ -71,6 +71,7 @@ html {
     flex-direction: column;
     max-height: 100%;
     max-width: 100%;
+    position: relative;
 }
 
 #modalCaption {
@@ -135,11 +136,13 @@ html {
 }
 
 #modalPrevious {
-    left: 1.25rem;
+    left: 0;
+    transform: translate(-100%, -50%);
 }
 
 #modalNext {
-    right: 1.25rem;
+    right: 0;
+    transform: translate(100%, -50%);
 }
 
 body:has(#modalWindow.show) .hol-Footer > .hol-Footer-topLink {
@@ -310,10 +313,10 @@ body:has(#modalWindow.show) .hol-Footer > .hol-Footer-topLink {
     }
 
     #modalPrevious {
-        left: 0.5rem;
+        left: 0;
     }
 
     #modalNext {
-        right: 0.5rem;
+        right: 0;
     }
 }

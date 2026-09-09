@@ -62,6 +62,7 @@ if (typeof document !== "undefined") {
 
             activeImage = image;
             const frame = ensureFrame(modal, caption, modalImage);
+            ensureNavigation(modal);
             const description = getDescription(image);
             frame.style.removeProperty("width");
             modalImage.addEventListener("load", () => syncFrameWidth(frame, modalImage), { once: true });
@@ -92,14 +93,11 @@ if (typeof document !== "undefined") {
                 const index = getAdjacentIndex(images.indexOf(activeImage), images.length, offset);
                 if (index !== -1) showImage(images[index]);
             });
-            modal.append(button);
+            (modal.querySelector("#workshopModalFrame") ?? modal).append(button);
             return button;
         };
 
-        const ensureNavigation = () => {
-            const modal = document.getElementById("modalWindow");
-            if (!modal) return;
-
+        const ensureNavigation = (modal) => {
             addNavigationButton(modal, "modalPrevious", "Imagen anterior", -1);
             addNavigationButton(modal, "modalNext", "Imagen siguiente", 1);
         };
@@ -112,7 +110,6 @@ if (typeof document !== "undefined") {
 
             event.preventDefault();
             event.stopImmediatePropagation();
-            ensureNavigation();
             showImage(image);
         }, true);
 
