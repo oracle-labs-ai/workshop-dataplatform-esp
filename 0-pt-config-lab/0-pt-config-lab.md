@@ -33,7 +33,7 @@ El objetivo principal de Oracle Free Tier es **permitirle probar y desarrollar s
 ### _**Disfrute su experiencia en Oracle Cloud.**_
 
 
-## 1️⃣ Creación de la cuenta Oracle Free Tier
+## 1️⃣ Creacion de Oracle Free Tier
 
 Visite [www.oracle.com/cloud/free](https://www.oracle.com/cloud/free/) y haga clic en **"Start for Free"**.
 
@@ -93,7 +93,7 @@ Complete la información de dirección. Cuando haya llenado todos los campos, ha
 
 ![Payment Information](images/agreement.png " ")
 
-## 3️⃣ Configuración de la autenticación de dos factores
+## 3️⃣ Autentificacion de dos factores
 
 Después de iniciar el Free Trial, espere mientras Oracle configura su cuenta. Aparecerá el mensaje **"Please wait while we finish setting up your account"**. Este proceso puede tardar algunos minutos.
 
@@ -157,7 +157,7 @@ Con la cuenta Oracle Cloud Free Tier configurada, ya puede continuar con cualqui
 - **Autora colaboradora** - Isabelle Anjos
 - **Última actualización** - Agosto de 2026
 
-## 🛡️ Declaración de puerto seguro (Safe Harbor)
+## Safe Harbor
 
 El tutorial presentado tiene por objeto describir la dirección general de nuestros productos. Se ofrece únicamente con fines informativos y no puede incorporarse a un contrato. No constituye un compromiso de entrega de ningún material, código o funcionalidad, ni debe considerarse para decisiones de compra. El desarrollo, lanzamiento, fecha de disponibilidad y precio de las funcionalidades o recursos de los productos Oracle descritos están sujetos a cambios y son de exclusiva discreción de Oracle Corporation.
 
