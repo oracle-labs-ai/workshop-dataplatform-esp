@@ -30,11 +30,15 @@ if (typeof document !== "undefined") {
             }
             let previous = imageBlock?.previousElementSibling;
 
-            while (previous && !previous.matches("p, li, blockquote")) {
+            while (previous && !previous.matches("p, li, blockquote, ol, ul")) {
                 previous = previous.previousElementSibling;
             }
 
-            return inlineText || previous?.textContent.trim() || image.alt || "Imagen del laboratorio";
+            const previousText = previous?.matches("ol, ul")
+                ? previous.lastElementChild?.textContent.trim()
+                : previous?.textContent.trim();
+
+            return inlineText || previousText || image.alt || "Imagen del laboratorio";
         };
 
         const updateNavigation = (modal) => {
