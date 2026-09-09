@@ -46,6 +46,31 @@ html {
     content: "LAB 2";
 }
 
+.workshop-alert {
+    align-items: center;
+    background: #fff3cd;
+    border: 1px solid #e0b44c;
+    border-radius: 0.25rem;
+    color: #3f3100;
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    margin: 1.5rem auto;
+    max-width: 60rem;
+    padding: 1rem 1.25rem;
+    text-align: center;
+}
+
+.workshop-alert-icon {
+    flex: 0 0 1.75rem;
+    height: 1.75rem;
+    width: 1.75rem;
+}
+
+.workshop-alert p {
+    margin: 0;
+}
+
 #container {
     padding-bottom: var(--fixed-footer-height);
 }
