@@ -3,7 +3,9 @@ const getAdjacentIndex = (index, count, offset) => {
     return nextIndex >= 0 && nextIndex < count ? nextIndex : -1;
 };
 
-if (typeof module !== "undefined") module.exports = { getAdjacentIndex };
+const getStepDescription = (alt) => alt.startsWith("Paso: ") ? alt.slice(6).trim() : "";
+
+if (typeof module !== "undefined") module.exports = { getAdjacentIndex, getStepDescription };
 
 if (typeof document !== "undefined") {
     (() => {
@@ -12,6 +14,19 @@ if (typeof document !== "undefined") {
         let captionWidthObserver = null;
 
         const getImages = () => Array.from(content.querySelectorAll("img:not(#modalImg)"));
+
+        const addStepDescriptions = () => {
+            getImages().forEach((image) => {
+                const description = getStepDescription(image.alt);
+                if (!description || image.dataset.workshopStepDescription) return;
+
+                const descriptionElement = document.createElement("p");
+                descriptionElement.className = "workshop-image-description";
+                descriptionElement.textContent = description;
+                (image.closest("figure") ?? image).before(descriptionElement);
+                image.dataset.workshopStepDescription = "true";
+            });
+        };
 
         const getDescription = (image) => {
             const figure = image.closest("figure");
@@ -165,6 +180,9 @@ if (typeof document !== "undefined") {
             event.stopImmediatePropagation();
             showImage(image);
         }, true);
+
+        new MutationObserver(addStepDescriptions).observe(content, { childList: true, subtree: true });
+        addStepDescriptions();
 
         document.addEventListener("keydown", (event) => {
             const modal = document.getElementById("modalWindow");

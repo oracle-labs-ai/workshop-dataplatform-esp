@@ -321,10 +321,7 @@ df_silver.show(10, truncate=False)
     .saveAsTable("demo.silver.customers_orders")
 )
 ```
-<figure>
-  <figcaption>Ejecute el notebook para crear y revisar la tabla Silver.</figcaption>
-  <img src="aidataplatform/images/notebook06.png" alt="Ejecute el notebook para crear y revisar la tabla Silver.">
-</figure>
+![Paso: Ejecute el notebook para crear y revisar la tabla Silver.](images/notebook06.png)
 
 ### **➡️ Análisis exploratorio de Silver**
 
@@ -357,10 +354,7 @@ df_analyze.select([
 
 df_analyze.describe().show(truncate=False)
 ```
-<figure>
-  <figcaption>Ejecute las consultas y revise los resultados del análisis de la capa Silver.</figcaption>
-  <img src="aidataplatform/images/notebook07.png" alt="Ejecute las consultas y revise los resultados del análisis de la capa Silver.">
-</figure>
+![Paso: Ejecute las consultas y revise los resultados del análisis de la capa Silver.](images/notebook07.png)
 
 ## **4️⃣ Creación de la capa Gold**
 
@@ -409,10 +403,7 @@ df_gold.show(truncate=False)
 
 spark.table("demo.gold.customer_class_agg_review").show(truncate=False)
 ```
-<figure>
-  <figcaption>Ejecute el notebook para generar la tabla Gold y validar sus resultados.</figcaption>
-  <img src="aidataplatform/images/notebook08.png" alt="Ejecute el notebook para generar la tabla Gold y validar sus resultados.">
-</figure>
+![Paso: Ejecute el notebook para generar la tabla Gold y validar sus resultados.](images/notebook08.png)
 
 ## **5️⃣ Escritura en Database**
 
@@ -448,10 +439,7 @@ gold_df.write.saveAsTable("adb01.ADMIN.CUSTOMER_CLASS_AGG_REVIEW")
 
 print("Gold carregada com sucesso!")
 ```
-<figure>
-  <figcaption>Ejecute el notebook y confirme que las tablas se copiaron al Autonomous Database.</figcaption>
-  <img src="aidataplatform/images/notebook09.png" alt="Ejecute el notebook y confirme que las tablas se copiaron al Autonomous Database.">
-</figure>
+![Paso: Ejecute el notebook y confirme que las tablas se copiaron al Autonomous Database.](images/notebook09.png)
 
 Como prueba, cree una nueva celda y consulte las tablas recién cargadas en Autonomous Database. Copie y pegue el siguiente código:
 
@@ -470,10 +458,7 @@ alh_df_gold = spark.read.format("aidataplatform") \
 
 alh_df_gold.show()
 ```
-<figure>
-  <figcaption>Ejecute las consultas de prueba y compruebe los datos publicados.</figcaption>
-  <img src="aidataplatform/images/notebook10.png" alt="Ejecute las consultas de prueba y compruebe los datos publicados.">
-</figure>
+![Paso: Ejecute las consultas de prueba y compruebe los datos publicados.](images/notebook10.png)
 
 ## **6️⃣ Orquestación con Workflow**
 
@@ -482,19 +467,13 @@ Por último, en el panel izquierdo, haga clic en **Workflow > Create Job**, así
 ``` text
 notebook_bronze  ->  notebook_silver  ->  notebook_gold  ->  notebook_adb
 ```
-<figure>
-  <figcaption>Verifique que las cuatro tareas estén conectadas en secuencia.</figcaption>
-  <img src="aidataplatform/images/workflow01.png" alt="Verifique que las cuatro tareas estén conectadas en secuencia.">
-</figure>
+![Paso: Verifique que las cuatro tareas estén conectadas en secuencia.](images/workflow01.png)
 
 Ejecute el workflow, siga su avance y valide los resultados de cada actividad en la pestaña run.
 
 ![workflow02](images/workflow02.png)
 
-<figure>
-  <figcaption>Revise que todas las tareas finalicen correctamente en la ejecución del workflow.</figcaption>
-  <img src="aidataplatform/images/workflow03.png" alt="Revise que todas las tareas finalicen correctamente en la ejecución del workflow.">
-</figure>
+![Paso: Revise que todas las tareas finalicen correctamente en la ejecución del workflow.](images/workflow03.png)
 
 Si desea programar la ejecución del workflow, puede hacerlo desde la pestaña de configuración del job mediante **Details** y **Schedule**. También puede invocar el job mediante API y SDK.
 
