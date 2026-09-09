@@ -359,7 +359,7 @@ spark.table("demo.gold.customer_class_agg_review").show(truncate=False)
 ```
 ![notebook08](images/notebook08.png)
 
-## **5️⃣ Escritura en Autonomous Database**
+## **5️⃣ Escritura en Database**
 
 Por último, replicaremos y escribiremos las tablas `demo.silver.customers_orders` y `demo.gold.customer_class_agg_review` en el Autonomous Database configurado anteriormente. Puede encontrar otros ejemplos en https://github.com/oracle-samples/oracle-aidp-samples/tree/main.
 
@@ -525,7 +525,7 @@ En métricas puede obtener una vista general del entorno.
 - **Autora colaboradora** - Isabelle Anjos
 - **Última actualización** - Agosto de 2026
 
-## 🛡️ Declaración de puerto seguro (Safe Harbor)
+## 🛡️ Safe Harbor
 
 El tutorial presentado tiene por objeto describir la dirección general de nuestros productos. Se ofrece únicamente con fines informativos y no puede incorporarse a un contrato. No constituye un compromiso de entrega de ningún material, código o funcionalidad, ni debe considerarse para decisiones de compra. El desarrollo, lanzamiento, fecha de disponibilidad y precio de las funcionalidades o recursos de los productos Oracle descritos están sujetos a cambios y son de exclusiva discreción de Oracle Corporation.
 
