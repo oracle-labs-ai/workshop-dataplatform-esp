@@ -11,6 +11,11 @@ html {
     scroll-margin-top: 3.5rem;
 }
 
+#leftNav,
+#contentBox {
+    transition: left 220ms ease, margin-left 220ms ease, width 220ms ease;
+}
+
 #openNav {
     align-items: center;
     color: #ffffff;
@@ -141,6 +146,11 @@ html {
 
     .hol-Footer > .hol-Footer-topLink {
         animation: none;
+    }
+
+    #leftNav,
+    #contentBox {
+        transition: none;
     }
 }
 
