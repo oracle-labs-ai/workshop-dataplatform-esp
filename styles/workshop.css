@@ -74,10 +74,12 @@ html {
     align-items: center;
     animation: floating-control-in 220ms ease-out both;
     background: #ffffff;
-    border: 1px solid #777777;
+    background-image: none;
+    border: 0;
     border-radius: 0;
     bottom: calc(var(--fixed-footer-height) + 2rem);
-    box-shadow: 0 2px 8px rgb(0 0 0 / 22%);
+    box-shadow: none;
+    color: #000000;
     display: inline-flex;
     height: var(--floating-control-size);
     justify-content: center;
@@ -97,8 +99,6 @@ html {
 
 .hol-Footer > .hol-Footer-topLink:hover {
     background: #f2f2f2;
-    border-color: #5f5f5f;
-    color: #000000;
 }
 
 .hol-Footer > .hol-Footer-topLink:focus-visible {
