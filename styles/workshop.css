@@ -11,6 +11,19 @@ html {
     scroll-margin-top: 3.5rem;
 }
 
+#module-content figure {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#module-content img {
+    display: block;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+}
+
 #leftNav,
 #contentBox {
     transition: left 220ms ease, margin-left 220ms ease, width 220ms ease;
