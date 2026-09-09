@@ -9,12 +9,13 @@ if (typeof document !== "undefined") {
     (() => {
         const content = document.getElementById("module-content");
         let activeImage = null;
-        let navigationHeightObserver = null;
+        let captionWidthObserver = null;
 
         const getImages = () => Array.from(content.querySelectorAll("img:not(#modalImg)"));
 
         const getDescription = (image) => {
             const figure = image.closest("figure");
+            const figureCaption = figure?.querySelector("figcaption")?.textContent.trim();
             const textBlock = figure?.parentElement?.matches("p, li")
                 ? figure.parentElement
                 : image.parentElement?.matches("p, li") ? image.parentElement : null;
@@ -38,7 +39,7 @@ if (typeof document !== "undefined") {
                 ? previous.lastElementChild?.textContent.trim()
                 : previous?.textContent.trim();
 
-            return inlineText || previousText || image.alt || "Imagen del laboratorio";
+            return inlineText || figureCaption || previousText || image.alt || "Imagen del laboratorio";
         };
 
         const updateNavigation = (modal) => {
@@ -66,21 +67,20 @@ if (typeof document !== "undefined") {
             return frame;
         };
 
-        const syncNavigationHeight = (modalImage) => {
+        const syncCaptionWidth = (modalImage) => {
             const frame = modalImage.closest("#workshopModalFrame");
-            const { height, width } = modalImage.getBoundingClientRect();
+            const { width } = modalImage.getBoundingClientRect();
             if (!frame) return;
 
-            if (height) frame.style.setProperty("--modal-image-height", `${height}px`);
             if (width) frame.querySelector("#modalCaption")?.style.setProperty("--modal-image-width", `${width}px`);
         };
 
-        const observeNavigationHeight = (modalImage) => {
-            if (navigationHeightObserver) return;
+        const observeCaptionWidth = (modalImage) => {
+            if (captionWidthObserver) return;
 
-            const sync = () => syncNavigationHeight(modalImage);
-            navigationHeightObserver = new ResizeObserver(sync);
-            navigationHeightObserver.observe(modalImage);
+            const sync = () => syncCaptionWidth(modalImage);
+            captionWidthObserver = new ResizeObserver(sync);
+            captionWidthObserver.observe(modalImage);
             modalImage.addEventListener("load", sync);
         };
 
@@ -100,8 +100,8 @@ if (typeof document !== "undefined") {
             modalImage.setAttribute("aria-describedby", "modalCaption");
             caption.textContent = description;
             modal.classList.add("show");
-            observeNavigationHeight(modalImage);
-            syncNavigationHeight(modalImage);
+            observeCaptionWidth(modalImage);
+            syncCaptionWidth(modalImage);
             updateNavigation(modal);
         };
 

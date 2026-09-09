@@ -129,7 +129,7 @@ html {
     cursor: pointer;
     display: inline-flex;
     font-size: 2rem;
-    height: var(--modal-image-height, auto);
+    height: auto;
     justify-content: center;
     line-height: 1;
     padding: 0 0 0.2rem;
