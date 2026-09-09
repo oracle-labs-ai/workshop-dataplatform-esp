@@ -1,4 +1,4 @@
-# OCI AI Data Platform
+# AI Data Platform Workbench
 
 ## 🎯 **Objetivos**
 
