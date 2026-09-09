@@ -76,7 +76,6 @@ html {
 }
 
 #workshopModalMedia {
-    max-width: 100%;
     position: relative;
     width: fit-content;
 }
@@ -104,7 +103,7 @@ html {
     display: block;
     height: auto;
     max-height: calc(100vh - 8rem);
-    max-width: 100%;
+    max-width: calc(100vw - 11rem);
     position: static;
     width: auto;
 }
@@ -317,6 +316,10 @@ body:has(#modalWindow.show) .hol-Footer > .hol-Footer-topLink {
 
     #modalWindow {
         padding: 2.75rem 3.75rem 1rem;
+    }
+
+    #modalImg {
+        max-width: calc(100vw - 7.5rem);
     }
 
     .workshop-modal-navigation {
