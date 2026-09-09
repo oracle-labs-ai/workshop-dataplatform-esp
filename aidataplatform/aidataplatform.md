@@ -34,7 +34,15 @@ Asigne un nombre a su instancia y a su workspace, y elija las políticas predete
 
 ![Form02](images/form02.png)
 
-> **⚠️ ATENCIÓN:** La creación de la instancia de AIDP puede tardar aproximadamente 10 minutos.
+<aside class="workshop-alert" role="note" aria-label="Atención">
+  <svg class="workshop-alert-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M11 13C11 13.5523 11.4477 14 12 14C12.5523 14 13 13.5523 13 13V10C13 9.44772 12.5523 9 12 9C11.4477 9 11 9.44772 11 10V13ZM13 15.9888C13 15.4365 12.5523 14.9888 12 14.9888C11.4477 14.9888 11 15.4365 11 15.9888V16C11 16.5523 11.4477 17 12 17C12.5523 17 13 16.5523 13 16V15.9888ZM9.37735 4.66136C10.5204 2.60393 13.4793 2.60393 14.6223 4.66136L21.2233 16.5431C22.3341 18.5427 20.8882 21 18.6008 21H5.39885C3.11139 21 1.66549 18.5427 2.77637 16.5431L9.37735 4.66136Z" fill="currentColor" />
+  </svg>
+  <div class="workshop-alert-copy">
+    <strong>Atención.</strong>
+    <p>La creación de la instancia de AIDP puede tardar aproximadamente 10 minutos.</p>
+  </div>
+</aside>
 
 2.  Cree **un Autonomous Database**
 
@@ -44,15 +52,39 @@ Cree un Autonomous Database con las siguientes configuraciones.
 
 ![Form01_ADB](images/form01_adb.png)
 
-> **⚠️ ATENCIÓN:** Asegúrese de que la versión de Autonomous Database sea 26ai.
+<aside class="workshop-alert" role="note" aria-label="Atención">
+  <svg class="workshop-alert-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M11 13C11 13.5523 11.4477 14 12 14C12.5523 14 13 13.5523 13 13V10C13 9.44772 12.5523 9 12 9C11.4477 9 11 9.44772 11 10V13ZM13 15.9888C13 15.4365 12.5523 14.9888 12 14.9888C11.4477 14.9888 11 15.4365 11 15.9888V16C11 16.5523 11.4477 17 12 17C12.5523 17 13 16.5523 13 16V15.9888ZM9.37735 4.66136C10.5204 2.60393 13.4793 2.60393 14.6223 4.66136L21.2233 16.5431C22.3341 18.5427 20.8882 21 18.6008 21H5.39885C3.11139 21 1.66549 18.5427 2.77637 16.5431L9.37735 4.66136Z" fill="currentColor" />
+  </svg>
+  <div class="workshop-alert-copy">
+    <strong>Atención.</strong>
+    <p>Asegúrese de usar Oracle AI Database 26ai.</p>
+  </div>
+</aside>
 
 ![Form02_ADB](images/form02_adb.png)
 
-> **⚠️ ATENCIÓN:** Se sugiere utilizar la contraseña **WORKSHOPsec2019##**; no obstante, puede elegir otra. Puede mantener el resto de las configuraciones predeterminadas y, después, hacer clic en **Create**.
+<aside class="workshop-alert" role="note" aria-label="Atención">
+  <svg class="workshop-alert-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M11 13C11 13.5523 11.4477 14 12 14C12.5523 14 13 13.5523 13 13V10C13 9.44772 12.5523 9 12 9C11.4477 9 11 9.44772 11 10V13ZM13 15.9888C13 15.4365 12.5523 14.9888 12 14.9888C11.4477 14.9888 11 15.4365 11 15.9888V16C11 16.5523 11.4477 17 12 17C12.5523 17 13 16.5523 13 16V15.9888ZM9.37735 4.66136C10.5204 2.60393 13.4793 2.60393 14.6223 4.66136L21.2233 16.5431C22.3341 18.5427 20.8882 21 18.6008 21H5.39885C3.11139 21 1.66549 18.5427 2.77637 16.5431L9.37735 4.66136Z" fill="currentColor" />
+  </svg>
+  <div class="workshop-alert-copy">
+    <strong>Atención.</strong>
+    <p>Se sugiere utilizar la contraseña <strong>WORKSHOPsec2019##</strong>; no obstante, puede elegir otra. Puede mantener el resto de las configuraciones predeterminadas y, después, hacer clic en <strong>Create</strong>.</p>
+  </div>
+</aside>
 
 ![Form03_ADB](images/form03_adb.png)
 
-> **⚠️ ATENCIÓN:** La creación de la instancia de Autonomous Database puede tardar aproximadamente 5 minutos.
+<aside class="workshop-alert" role="note" aria-label="Atención">
+  <svg class="workshop-alert-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M11 13C11 13.5523 11.4477 14 12 14C12.5523 14 13 13.5523 13 13V10C13 9.44772 12.5523 9 12 9C11.4477 9 11 9.44772 11 10V13ZM13 15.9888C13 15.4365 12.5523 14.9888 12 14.9888C11.4477 14.9888 11 15.4365 11 15.9888V16C11 16.5523 11.4477 17 12 17C12.5523 17 13 16.5523 13 16V15.9888ZM9.37735 4.66136C10.5204 2.60393 13.4793 2.60393 14.6223 4.66136L21.2233 16.5431C22.3341 18.5427 20.8882 21 18.6008 21H5.39885C3.11139 21 1.66549 18.5427 2.77637 16.5431L9.37735 4.66136Z" fill="currentColor" />
+  </svg>
+  <div class="workshop-alert-copy">
+    <strong>Atención.</strong>
+    <p>La creación de la instancia de Oracle AI Database 26ai puede tardar aproximadamente 5 minutos.</p>
+  </div>
+</aside>
 
 3.  Regrese a la instancia de AIDP y cree **un catálogo Standard**.
 
@@ -82,7 +114,15 @@ En la pantalla de detalles de Autonomous Database, haga clic en **Database Conne
 
 ![autonomous_connection](images/autonomous_connection.png)
 
-> **⚠️ ATENCIÓN:** Se sugiere utilizar la contraseña **WORKSHOPsec2019##**; no obstante, puede elegir otra si lo prefiere.
+<aside class="workshop-alert" role="note" aria-label="Atención">
+  <svg class="workshop-alert-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M11 13C11 13.5523 11.4477 14 12 14C12.5523 14 13 13.5523 13 13V10C13 9.44772 12.5523 9 12 9C11.4477 9 11 9.44772 11 10V13ZM13 15.9888C13 15.4365 12.5523 14.9888 12 14.9888C11.4477 14.9888 11 15.4365 11 15.9888V16C11 16.5523 11.4477 17 12 17C12.5523 17 13 16.5523 13 16V15.9888ZM9.37735 4.66136C10.5204 2.60393 13.4793 2.60393 14.6223 4.66136L21.2233 16.5431C22.3341 18.5427 20.8882 21 18.6008 21H5.39885C3.11139 21 1.66549 18.5427 2.77637 16.5431L9.37735 4.66136Z" fill="currentColor" />
+  </svg>
+  <div class="workshop-alert-copy">
+    <strong>Atención.</strong>
+    <p>Se sugiere utilizar la contraseña <strong>WORKSHOPsec2019##</strong>; no obstante, puede elegir otra si lo prefiere.</p>
+  </div>
+</aside>
 
 Asigne el nombre **adb01** al catálogo, cargue la wallet en el formulario de AIDP, elija el servicio **Medium** y complete los demás datos como se muestra en la captura.
 
