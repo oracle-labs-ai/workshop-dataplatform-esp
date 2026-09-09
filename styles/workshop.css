@@ -141,8 +141,10 @@ html {
 }
 
 .workshop-modal-navigation:disabled {
+    background: #000000;
+    color: transparent;
     cursor: default;
-    opacity: 0.35;
+    opacity: 1;
 }
 
 #modalPrevious {

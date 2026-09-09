@@ -57,6 +57,7 @@ if (typeof document !== "undefined") {
             const caption = document.getElementById("modalCaption");
             if (!modal || !modalImage || !caption) return;
 
+            preserveModalUntilClosed();
             activeImage = image;
             ensureFrame(modal, caption, modalImage);
             ensureNavigation(modal);
@@ -67,6 +68,24 @@ if (typeof document !== "undefined") {
             caption.textContent = description;
             modal.classList.add("show");
             updateNavigation(modal);
+        };
+
+        const returnToActiveImage = () => {
+            requestAnimationFrame(() => activeImage?.scrollIntoView({ behavior: "smooth", block: "center" }));
+        };
+
+        const preserveModalUntilClosed = () => {
+            const modal = document.getElementById("modalWindow");
+            if (!modal || modal.dataset.workshopDismissalBehavior) return;
+
+            modal.dataset.workshopDismissalBehavior = "true";
+            modal.addEventListener("click", (event) => {
+                if (!(event.target instanceof Element)
+                    || !event.target.closest("#modalClose, .workshop-modal-navigation")) {
+                    event.stopImmediatePropagation();
+                }
+            }, true);
+            document.getElementById("modalClose")?.addEventListener("click", returnToActiveImage);
         };
 
         const addNavigationButton = (modal, id, label, offset) => {
@@ -113,6 +132,7 @@ if (typeof document !== "undefined") {
 
             if (event.key === "Escape") {
                 modal.classList.remove("show");
+                returnToActiveImage();
                 return;
             }
 
