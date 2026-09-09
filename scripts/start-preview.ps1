@@ -22,6 +22,7 @@ if ($LASTEXITCODE -ne 0 -or [string]::IsNullOrWhiteSpace($pythonPath)) {
     throw 'Python 3.11 is required to start the local preview.'
 }
 
-$previewProcess = Start-Process -FilePath $pythonPath.Trim() -ArgumentList @('-m', 'http.server', $Port, '--bind', '127.0.0.1', '--directory', $repoRoot) -WindowStyle Hidden -PassThru
+$previewServer = Join-Path $PSScriptRoot 'preview_server.py'
+$previewProcess = Start-Process -FilePath $pythonPath.Trim() -ArgumentList @($previewServer, '--port', $Port, '--directory', $repoRoot) -WindowStyle Hidden -PassThru
 Write-Host "Preview running at http://127.0.0.1:$Port/ (PID $($previewProcess.Id))."
 Write-Host "Stop it with: Stop-Process -Id $($previewProcess.Id)"

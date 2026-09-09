@@ -4,6 +4,22 @@
     --floating-control-gap: 0.75rem;
 }
 
+#openNav {
+    align-items: center;
+    color: #ffffff;
+    display: inline-flex;
+    justify-content: center;
+    margin-right: 1.25rem;
+    padding: 0;
+    width: 2.75rem;
+}
+
+#openNav .workshop-menu-icon {
+    height: 1.5rem;
+    pointer-events: none;
+    width: 1.5rem;
+}
+
 #container {
     padding-bottom: var(--fixed-footer-height);
 }
