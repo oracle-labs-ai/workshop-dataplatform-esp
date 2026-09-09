@@ -21,8 +21,6 @@ Aprenderá a:
 
 > **El laboratorio implementa un pipeline de datos por capas. El procesamiento se realiza en OCI AI Data Platform con notebooks y Spark. En este workshop trabajaremos con un conjunto de datos CSV, procesaremos los datos mediante AIDP y, finalmente, los publicaremos en Autonomous Database en OCI; además, crearemos un agent sencillo.**
 
-# **Parte 1 - Práctica guiada de AI Data Platform**
-
 ## **1️⃣ Preparación de la infraestructura**
 
 Antes de iniciar la práctica guiada, prepare los recursos necesarios:
