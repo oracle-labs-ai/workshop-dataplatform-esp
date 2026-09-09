@@ -52,7 +52,7 @@ Haga clic en **+ Crear usuario**, cree el usuario `AI` y conceda los grants como
 
 ![adb_user](images/adb_user.png)
 
-## **2️⃣ Configurar y orquestar transformaciones con procedures y Oracle Scheduler**
+## **2️⃣ Procedure y Oracle Scheduler**
 
 En el menú de la esquina superior izquierda, haga clic en **SQL**.
 
@@ -184,7 +184,7 @@ Cuando termine, haga clic en la pestaña de historial y reporte para obtener una
 
 ![scheduler_04](images/scheduler_04.png)
 
-## **3️⃣ Importar y configurar la aplicación Select AI**
+## **3️⃣ Configurar Select AI**
 
 Haga clic en el ícono de la esquina superior izquierda y seleccione apex. Inicie sesión de nuevo con el usuario ADMIN y la contraseña configurada al crear Oracle AI Database 26ai.
 
