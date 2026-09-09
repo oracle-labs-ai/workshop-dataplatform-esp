@@ -64,6 +64,8 @@ Cree un Autonomous Database con las siguientes configuraciones.
   </div>
 </aside>
 
+En **Database configuration**, seleccione **26ai**, 2 ECPU y 1 TB de almacenamiento.
+
 ![Form02_ADB](images/form02_adb.png)
 
 <aside class="workshop-alert" role="note" aria-label="Atención">
@@ -75,6 +77,8 @@ Cree un Autonomous Database con las siguientes configuraciones.
     <p>Se sugiere utilizar la contraseña <strong>WORKSHOPsec2019##</strong>; no obstante, puede elegir otra. Puede mantener el resto de las configuraciones predeterminadas y, después, hacer clic en <strong>Create</strong>.</p>
   </div>
 </aside>
+
+En **Advanced options**, configure la contraseña del usuario **ADMIN**.
 
 ![Form03_ADB](images/form03_adb.png)
 
@@ -317,6 +321,9 @@ df_silver.show(10, truncate=False)
     .saveAsTable("demo.silver.customers_orders")
 )
 ```
+
+Ejecute el notebook para crear y revisar la tabla Silver.
+
 ![notebook06](images/notebook06.png)
 
 ### **➡️ Análisis exploratorio de Silver**
@@ -350,6 +357,9 @@ df_analyze.select([
 
 df_analyze.describe().show(truncate=False)
 ```
+
+Ejecute las consultas y revise los resultados del análisis de la capa Silver.
+
 ![notebook07](images/notebook07.png)
 
 ## **4️⃣ Creación de la capa Gold**
@@ -399,6 +409,9 @@ df_gold.show(truncate=False)
 
 spark.table("demo.gold.customer_class_agg_review").show(truncate=False)
 ```
+
+Ejecute el notebook para generar la tabla Gold y validar sus resultados.
+
 ![notebook08](images/notebook08.png)
 
 ## **5️⃣ Escritura en Database**
@@ -435,6 +448,9 @@ gold_df.write.saveAsTable("adb01.ADMIN.CUSTOMER_CLASS_AGG_REVIEW")
 
 print("Gold carregada com sucesso!")
 ```
+
+Ejecute el notebook y confirme que las tablas se copiaron al Autonomous Database.
+
 ![notebook09](images/notebook09.png)
 
 Como prueba, cree una nueva celda y consulte las tablas recién cargadas en Autonomous Database. Copie y pegue el siguiente código:
@@ -454,6 +470,9 @@ alh_df_gold = spark.read.format("aidataplatform") \
 
 alh_df_gold.show()
 ```
+
+Ejecute las consultas de prueba y compruebe los datos publicados.
+
 ![notebook10](images/notebook10.png)
 
 ## **6️⃣ Orquestación con Workflow**
@@ -464,11 +483,15 @@ Por último, en el panel izquierdo, haga clic en **Workflow > Create Job**, así
 notebook_bronze  ->  notebook_silver  ->  notebook_gold  ->  notebook_adb
 ```
 
+Verifique que las cuatro tareas estén conectadas en secuencia.
+
 ![workflow01](images/workflow01.png)
 
 Ejecute el workflow, siga su avance y valide los resultados de cada actividad en la pestaña run.
 
 ![workflow02](images/workflow02.png)
+
+Revise que todas las tareas finalicen correctamente en la ejecución del workflow.
 
 ![workflow03](images/workflow03.png)
 
@@ -551,6 +574,8 @@ En sessions puede ver las sesiones activas y el uso de tokens.
 ![agent12](images/agent12.png)
 
 En métricas puede obtener una vista general del entorno.
+
+Revise las métricas de ejecución y el uso del agent.
 
 ![agent13](images/agent13.png)
 
