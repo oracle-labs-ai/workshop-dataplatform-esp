@@ -47,13 +47,6 @@ if (typeof document !== "undefined") {
             return frame;
         };
 
-        const syncFrameWidth = (frame, modalImage) => {
-            requestAnimationFrame(() => {
-                const width = modalImage.getBoundingClientRect().width;
-                if (width) frame.style.width = `${width}px`;
-            });
-        };
-
         const showImage = (image) => {
             const modal = document.getElementById("modalWindow");
             const modalImage = document.getElementById("modalImg");
@@ -61,18 +54,15 @@ if (typeof document !== "undefined") {
             if (!modal || !modalImage || !caption) return;
 
             activeImage = image;
-            const frame = ensureFrame(modal, caption, modalImage);
+            ensureFrame(modal, caption, modalImage);
             ensureNavigation(modal);
             const description = getDescription(image);
-            frame.style.removeProperty("width");
-            modalImage.addEventListener("load", () => syncFrameWidth(frame, modalImage), { once: true });
             modalImage.src = image.src;
             modalImage.alt = description;
             modalImage.setAttribute("aria-describedby", "modalCaption");
             caption.textContent = description;
             modal.classList.add("show");
             updateNavigation(modal);
-            syncFrameWidth(frame, modalImage);
         };
 
         const addNavigationButton = (modal, id, label, offset) => {
