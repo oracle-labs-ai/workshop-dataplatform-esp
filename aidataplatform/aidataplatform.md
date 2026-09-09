@@ -204,7 +204,7 @@ print("demo.bronze.orders")
 print("demo.bronze.customers")
 ```
 
-Para ejecutar el notebook, adjunte un clúster Spark y haga clic en run all.
+Para ejecutar el notebook, adjunte un clúster Spark y haga clic en **[Run all]**.
 
 ![notebook03](images/notebook03.png)
 
