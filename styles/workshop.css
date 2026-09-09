@@ -59,6 +59,18 @@ html {
     display: none !important;
 }
 
+#modalWindow {
+    z-index: 2000;
+}
+
+#modalCaption {
+    display: none !important;
+}
+
+body:has(#modalWindow.show) .hol-Footer > .hol-Footer-topLink {
+    display: none;
+}
+
 .workshop-alert {
     align-items: flex-start;
     background: #fff3cd;
