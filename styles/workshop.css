@@ -32,6 +32,12 @@ html {
     max-width: 100%;
 }
 
+#module-content > article > section > ol {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+
 #leftNav,
 #contentBox {
     transition: left 220ms ease, margin-left 220ms ease, width 220ms ease;
