@@ -60,11 +60,76 @@ html {
 }
 
 #modalWindow {
+    box-sizing: border-box;
+    padding: 5rem 5.5rem 1.5rem;
     z-index: 2000;
 }
 
 #modalCaption {
-    display: none !important;
+    color: #ffffff;
+    display: block;
+    font-size: 1rem;
+    font-weight: 500;
+    height: auto;
+    left: 50%;
+    line-height: 1.4;
+    max-width: 70rem;
+    position: absolute;
+    text-align: center;
+    top: 1.25rem;
+    transform: translateX(-50%);
+    width: calc(100% - 10rem);
+}
+
+#modalImg {
+    max-height: 100%;
+    max-width: 100%;
+    position: static;
+}
+
+#modalClose {
+    z-index: 1;
+}
+
+.workshop-modal-navigation {
+    align-items: center;
+    background: rgba(0, 0, 0, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.65);
+    border-radius: 50%;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 2rem;
+    height: 3rem;
+    justify-content: center;
+    line-height: 1;
+    padding: 0 0 0.2rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3rem;
+}
+
+.workshop-modal-navigation:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.workshop-modal-navigation:focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 3px;
+}
+
+.workshop-modal-navigation:disabled {
+    cursor: default;
+    opacity: 0.35;
+}
+
+#modalPrevious {
+    left: 1.25rem;
+}
+
+#modalNext {
+    right: 1.25rem;
 }
 
 body:has(#modalWindow.show) .hol-Footer > .hol-Footer-topLink {
@@ -223,5 +288,26 @@ body:has(#modalWindow.show) .hol-Footer > .hol-Footer-topLink {
 
     .hol-Footer > .hol-Footer-topLink {
         right: 0.75rem;
+    }
+
+    #modalWindow {
+        padding: 5rem 3.75rem 1rem;
+    }
+
+    #modalCaption {
+        width: calc(100% - 7.5rem);
+    }
+
+    .workshop-modal-navigation {
+        height: 2.5rem;
+        width: 2.5rem;
+    }
+
+    #modalPrevious {
+        left: 0.5rem;
+    }
+
+    #modalNext {
+        right: 0.5rem;
     }
 }
