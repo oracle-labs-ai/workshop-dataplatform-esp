@@ -9,6 +9,7 @@ if (typeof document !== "undefined") {
     (() => {
         const content = document.getElementById("module-content");
         let activeImage = null;
+        let navigationHeightObserver = null;
 
         const getImages = () => Array.from(content.querySelectorAll("img:not(#modalImg)"));
 
@@ -51,6 +52,20 @@ if (typeof document !== "undefined") {
             return frame;
         };
 
+        const syncNavigationHeight = (modalImage) => {
+            const media = modalImage.closest("#workshopModalMedia");
+            if (media) media.style.setProperty("--modal-image-height", `${modalImage.getBoundingClientRect().height}px`);
+        };
+
+        const observeNavigationHeight = (modalImage) => {
+            if (navigationHeightObserver) return;
+
+            const sync = () => syncNavigationHeight(modalImage);
+            navigationHeightObserver = new ResizeObserver(sync);
+            navigationHeightObserver.observe(modalImage);
+            modalImage.addEventListener("load", sync);
+        };
+
         const showImage = (image) => {
             const modal = document.getElementById("modalWindow");
             const modalImage = document.getElementById("modalImg");
@@ -67,6 +82,8 @@ if (typeof document !== "undefined") {
             modalImage.setAttribute("aria-describedby", "modalCaption");
             caption.textContent = description;
             modal.classList.add("show");
+            observeNavigationHeight(modalImage);
+            syncNavigationHeight(modalImage);
             updateNavigation(modal);
         };
 
