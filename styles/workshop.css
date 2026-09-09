@@ -66,18 +66,19 @@ html {
 }
 
 #workshopModalFrame {
-    align-items: stretch;
+    align-items: center;
     display: flex;
     flex-direction: column;
     max-height: 100%;
     max-width: 100%;
     position: relative;
-    width: 100%;
+    width: fit-content;
 }
 
 #workshopModalMedia {
+    max-width: 100%;
     position: relative;
-    width: 100%;
+    width: fit-content;
 }
 
 #modalCaption {
@@ -99,10 +100,11 @@ html {
 
 #modalImg {
     display: block;
+    height: auto;
     max-height: calc(100vh - 8rem);
     max-width: 100%;
     position: static;
-    width: 100%;
+    width: auto;
 }
 
 #modalClose {
