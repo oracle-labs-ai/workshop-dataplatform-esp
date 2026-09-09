@@ -32,6 +32,8 @@ Asigne un nombre a su instancia y a su workspace, y elija las políticas predete
 
 ![Form01](images/form01.png)
 
+Para completar la configuración, en **Oracle Autonomous AI Lakehouse Configuration** seleccione **None**; mantenga **Oracle-managed key** y **Standard** en **Add policies**. Luego haga clic en **Create**.
+
 ![Form02](images/form02.png)
 
 <aside class="workshop-alert" role="note" aria-label="Atención">
