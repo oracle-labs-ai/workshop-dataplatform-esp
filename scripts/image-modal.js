@@ -43,7 +43,11 @@ if (typeof document !== "undefined") {
             frame = document.createElement("div");
             frame.id = "workshopModalFrame";
             modalImage.before(frame);
-            frame.append(caption, modalImage);
+            frame.append(caption);
+            const media = document.createElement("div");
+            media.id = "workshopModalMedia";
+            media.append(modalImage);
+            frame.append(media);
             return frame;
         };
 
@@ -83,7 +87,7 @@ if (typeof document !== "undefined") {
                 const index = getAdjacentIndex(images.indexOf(activeImage), images.length, offset);
                 if (index !== -1) showImage(images[index]);
             });
-            (modal.querySelector("#workshopModalFrame") ?? modal).append(button);
+            (modal.querySelector("#workshopModalMedia") ?? modal).append(button);
             return button;
         };
 
