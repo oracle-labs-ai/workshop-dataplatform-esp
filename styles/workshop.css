@@ -7,6 +7,10 @@ html {
     scroll-behavior: smooth;
 }
 
+#module-content [id] {
+    scroll-margin-top: 3.5rem;
+}
+
 #openNav {
     align-items: center;
     color: #ffffff;
