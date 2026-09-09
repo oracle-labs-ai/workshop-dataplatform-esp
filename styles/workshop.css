@@ -49,16 +49,19 @@ html {
 .workshop-alert {
     align-items: center;
     background: #fff3cd;
-    border: 1px solid #e0b44c;
-    border-radius: 0.25rem;
+    border: 0;
+    border-left: 0.375rem solid #d39e00;
+    box-sizing: border-box;
     color: #3f3100;
     display: flex;
-    gap: 0.75rem;
+    flex-direction: column;
+    gap: 0.5rem;
     justify-content: center;
-    margin: 1.5rem auto;
-    max-width: 60rem;
-    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+    max-width: none;
+    padding: 1.25rem 1.5rem;
     text-align: center;
+    width: 100%;
 }
 
 .workshop-alert-icon {
@@ -67,7 +70,13 @@ html {
     width: 1.75rem;
 }
 
-.workshop-alert p {
+.workshop-alert-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.workshop-alert-copy p {
     margin: 0;
 }
 
