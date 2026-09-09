@@ -2,11 +2,11 @@
 
 ## 🎯 **Objetivos**
 
-Demostrar en la práctica cómo utilizar algunas funcionalidades de Oracle Autonomous Database para atender cargas de trabajo de Data Warehouse.
+Demostrar en la práctica cómo utilizar algunas funcionalidades de Oracle AI Database 26ai para atender cargas de trabajo de Data Warehouse.
 
 Aprenderá a:
 
-- Crear y configurar nuevos esquemas y usuarios en Oracle Autonomous Database.
+- Crear y configurar nuevos esquemas y usuarios en Oracle AI Database 26ai.
 - Realizar y orquestar transformaciones mediante procedures y Oracle Scheduler.
 - Importar y configurar una aplicación de Select AI.
 - Configurar y probar Data Redaction.
@@ -26,11 +26,11 @@ Aprenderá a:
 
 ## 📌 Introducción
 
->**Esta práctica guiada muestra cómo Oracle Autonomous Database 26ai puede complementar AI Data Platform, aportando capacidades para atender cargas de trabajo de Data Warehouse de forma integrada, segura y automatizada. A lo largo del workshop aprenderá a crear y configurar esquemas y usuarios; realizar y orquestar transformaciones de datos con procedures y Oracle Scheduler; importar y configurar aplicaciones con Select AI; implementar Data Redaction para proteger información sensible, y configurar ORDS para publicar consultas sobre conjuntos de datos. El objetivo es brindar experiencia práctica con funcionalidades esenciales de Autonomous Database en Oracle Cloud.**
+>**Esta práctica guiada muestra cómo Oracle AI Database 26ai puede complementar AI Data Platform, aportando capacidades para atender cargas de trabajo de Data Warehouse de forma integrada, segura y automatizada. A lo largo del workshop aprenderá a crear y configurar esquemas y usuarios; realizar y orquestar transformaciones de datos con procedures y Oracle Scheduler; importar y configurar aplicaciones con Select AI; implementar Data Redaction para proteger información sensible, y configurar ORDS para publicar consultas sobre conjuntos de datos. El objetivo es brindar experiencia práctica con funcionalidades esenciales de Oracle AI Database 26ai en Oracle Cloud.**
 
 ## **1️⃣ Creación del esquema y preparación del entorno**
 
-Utilice la instancia de Oracle Autonomous Database creada en la práctica guiada de OCI AI Data Platform.
+Utilice la instancia de Oracle AI Database 26ai creada en la práctica guiada de OCI AI Data Platform.
 
 ![Link AIDP](images/link_adb.png)
 
@@ -178,7 +178,7 @@ Cuando termine, haga clic en la pestaña de historial y reporte para obtener una
 
 ## **3️⃣ Importar y configurar la aplicación Select AI**
 
-Haga clic en el ícono de la esquina superior izquierda y seleccione apex. Inicie sesión de nuevo con el usuario ADMIN y la contraseña configurada al crear Autonomous Database.
+Haga clic en el ícono de la esquina superior izquierda y seleccione apex. Inicie sesión de nuevo con el usuario ADMIN y la contraseña configurada al crear Oracle AI Database 26ai.
 
 ![apex_link](images/apex_link.png)
 
