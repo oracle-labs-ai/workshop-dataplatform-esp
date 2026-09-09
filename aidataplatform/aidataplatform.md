@@ -19,9 +19,7 @@ Aprenderá a:
 
 ## 📌 Introducción
 
-> **El laboratorio implementa un pipeline de datos por capas. El procesamiento se realiza en OCI AI Data Platform con notebooks y Spark. En este workshop trabajaremos con un conjunto de datos CSV, procesaremos los datos mediante AIDP y, finalmente, los publicaremos en Autonomous Database en OCI; además, crearemos un agent sencillo.**
-
-# **Parte 1 - Práctica guiada de AI Data Platform**
+El laboratorio implementa un pipeline de datos por capas. El procesamiento se realiza en OCI AI Data Platform con notebooks y Spark. En este workshop trabajaremos con un conjunto de datos CSV, procesaremos los datos mediante AIDP y, finalmente, los publicaremos en Autonomous Database en OCI; además, crearemos un agent sencillo.
 
 ## **1️⃣ Preparación de la infraestructura**
 
@@ -34,9 +32,19 @@ Asigne un nombre a su instancia y a su workspace, y elija las políticas predete
 
 ![Form01](images/form01.png)
 
+Para completar la configuración, en **Oracle Autonomous AI Lakehouse Configuration** seleccione **None**; mantenga **Oracle-managed key** y **Standard** en **Add policies**. Luego haga clic en **Create**.
+
 ![Form02](images/form02.png)
 
-> **⚠️ ATENCIÓN:** La creación de la instancia de AIDP puede tardar aproximadamente 10 minutos.
+<aside class="workshop-alert" role="note" aria-label="Atención">
+  <svg class="workshop-alert-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M11 13C11 13.5523 11.4477 14 12 14C12.5523 14 13 13.5523 13 13V10C13 9.44772 12.5523 9 12 9C11.4477 9 11 9.44772 11 10V13ZM13 15.9888C13 15.4365 12.5523 14.9888 12 14.9888C11.4477 14.9888 11 15.4365 11 15.9888V16C11 16.5523 11.4477 17 12 17C12.5523 17 13 16.5523 13 16V15.9888ZM9.37735 4.66136C10.5204 2.60393 13.4793 2.60393 14.6223 4.66136L21.2233 16.5431C22.3341 18.5427 20.8882 21 18.6008 21H5.39885C3.11139 21 1.66549 18.5427 2.77637 16.5431L9.37735 4.66136Z" fill="currentColor" />
+  </svg>
+  <div class="workshop-alert-copy">
+    <strong>Atención.</strong>
+    <p>La creación de la instancia de AIDP puede tardar aproximadamente 10 minutos.</p>
+  </div>
+</aside>
 
 2.  Cree **un Autonomous Database**
 
@@ -46,15 +54,43 @@ Cree un Autonomous Database con las siguientes configuraciones.
 
 ![Form01_ADB](images/form01_adb.png)
 
-> **⚠️ ATENCIÓN:** Asegúrese de que la versión de Autonomous Database sea 26ai.
+<aside class="workshop-alert" role="note" aria-label="Atención">
+  <svg class="workshop-alert-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M11 13C11 13.5523 11.4477 14 12 14C12.5523 14 13 13.5523 13 13V10C13 9.44772 12.5523 9 12 9C11.4477 9 11 9.44772 11 10V13ZM13 15.9888C13 15.4365 12.5523 14.9888 12 14.9888C11.4477 14.9888 11 15.4365 11 15.9888V16C11 16.5523 11.4477 17 12 17C12.5523 17 13 16.5523 13 16V15.9888ZM9.37735 4.66136C10.5204 2.60393 13.4793 2.60393 14.6223 4.66136L21.2233 16.5431C22.3341 18.5427 20.8882 21 18.6008 21H5.39885C3.11139 21 1.66549 18.5427 2.77637 16.5431L9.37735 4.66136Z" fill="currentColor" />
+  </svg>
+  <div class="workshop-alert-copy">
+    <strong>Atención.</strong>
+    <p>Asegúrese de usar Oracle AI Database 26ai.</p>
+  </div>
+</aside>
+
+En **Database configuration**, seleccione **26ai**, 2 ECPU y 1 TB de almacenamiento.
 
 ![Form02_ADB](images/form02_adb.png)
 
-> **⚠️ ATENCIÓN:** Se sugiere utilizar la contraseña **WORKSHOPsec2019##**; no obstante, puede elegir otra. Puede mantener el resto de las configuraciones predeterminadas y, después, hacer clic en **Create**.
+<aside class="workshop-alert" role="note" aria-label="Atención">
+  <svg class="workshop-alert-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M11 13C11 13.5523 11.4477 14 12 14C12.5523 14 13 13.5523 13 13V10C13 9.44772 12.5523 9 12 9C11.4477 9 11 9.44772 11 10V13ZM13 15.9888C13 15.4365 12.5523 14.9888 12 14.9888C11.4477 14.9888 11 15.4365 11 15.9888V16C11 16.5523 11.4477 17 12 17C12.5523 17 13 16.5523 13 16V15.9888ZM9.37735 4.66136C10.5204 2.60393 13.4793 2.60393 14.6223 4.66136L21.2233 16.5431C22.3341 18.5427 20.8882 21 18.6008 21H5.39885C3.11139 21 1.66549 18.5427 2.77637 16.5431L9.37735 4.66136Z" fill="currentColor" />
+  </svg>
+  <div class="workshop-alert-copy">
+    <strong>Atención.</strong>
+    <p>Se sugiere utilizar la contraseña <strong>WORKSHOPsec2019##</strong>; no obstante, puede elegir otra. Puede mantener el resto de las configuraciones predeterminadas y, después, hacer clic en <strong>Create</strong>.</p>
+  </div>
+</aside>
+
+En **Advanced options**, configure la contraseña del usuario **ADMIN**.
 
 ![Form03_ADB](images/form03_adb.png)
 
-> **⚠️ ATENCIÓN:** La creación de la instancia de Autonomous Database puede tardar aproximadamente 5 minutos.
+<aside class="workshop-alert" role="note" aria-label="Atención">
+  <svg class="workshop-alert-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M11 13C11 13.5523 11.4477 14 12 14C12.5523 14 13 13.5523 13 13V10C13 9.44772 12.5523 9 12 9C11.4477 9 11 9.44772 11 10V13ZM13 15.9888C13 15.4365 12.5523 14.9888 12 14.9888C11.4477 14.9888 11 15.4365 11 15.9888V16C11 16.5523 11.4477 17 12 17C12.5523 17 13 16.5523 13 16V15.9888ZM9.37735 4.66136C10.5204 2.60393 13.4793 2.60393 14.6223 4.66136L21.2233 16.5431C22.3341 18.5427 20.8882 21 18.6008 21H5.39885C3.11139 21 1.66549 18.5427 2.77637 16.5431L9.37735 4.66136Z" fill="currentColor" />
+  </svg>
+  <div class="workshop-alert-copy">
+    <strong>Atención.</strong>
+    <p>La creación de la instancia de Oracle AI Database 26ai puede tardar aproximadamente 5 minutos.</p>
+  </div>
+</aside>
 
 3.  Regrese a la instancia de AIDP y cree **un catálogo Standard**.
 
@@ -84,7 +120,15 @@ En la pantalla de detalles de Autonomous Database, haga clic en **Database Conne
 
 ![autonomous_connection](images/autonomous_connection.png)
 
-> **⚠️ ATENCIÓN:** Se sugiere utilizar la contraseña **WORKSHOPsec2019##**; no obstante, puede elegir otra si lo prefiere.
+<aside class="workshop-alert" role="note" aria-label="Atención">
+  <svg class="workshop-alert-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M11 13C11 13.5523 11.4477 14 12 14C12.5523 14 13 13.5523 13 13V10C13 9.44772 12.5523 9 12 9C11.4477 9 11 9.44772 11 10V13ZM13 15.9888C13 15.4365 12.5523 14.9888 12 14.9888C11.4477 14.9888 11 15.4365 11 15.9888V16C11 16.5523 11.4477 17 12 17C12.5523 17 13 16.5523 13 16V15.9888ZM9.37735 4.66136C10.5204 2.60393 13.4793 2.60393 14.6223 4.66136L21.2233 16.5431C22.3341 18.5427 20.8882 21 18.6008 21H5.39885C3.11139 21 1.66549 18.5427 2.77637 16.5431L9.37735 4.66136Z" fill="currentColor" />
+  </svg>
+  <div class="workshop-alert-copy">
+    <strong>Atención.</strong>
+    <p>Se sugiere utilizar la contraseña <strong>WORKSHOPsec2019##</strong>; no obstante, puede elegir otra si lo prefiere.</p>
+  </div>
+</aside>
 
 Asigne el nombre **adb01** al catálogo, cargue la wallet en el formulario de AIDP, elija el servicio **Medium** y complete los demás datos como se muestra en la captura.
 
@@ -160,7 +204,7 @@ print("demo.bronze.orders")
 print("demo.bronze.customers")
 ```
 
-Para ejecutar el notebook, adjunte un clúster Spark y haga clic en run all.
+Para ejecutar el notebook, adjunte un clúster Spark y haga clic en **[Run all]**.
 
 ![notebook03](images/notebook03.png)
 
@@ -277,7 +321,10 @@ df_silver.show(10, truncate=False)
     .saveAsTable("demo.silver.customers_orders")
 )
 ```
-![notebook06](images/notebook06.png)
+<figure>
+  <figcaption>Ejecute el notebook para crear y revisar la tabla Silver.</figcaption>
+  <img src="aidataplatform/images/notebook06.png" alt="Ejecute el notebook para crear y revisar la tabla Silver.">
+</figure>
 
 ### **➡️ Análisis exploratorio de Silver**
 
@@ -310,7 +357,10 @@ df_analyze.select([
 
 df_analyze.describe().show(truncate=False)
 ```
-![notebook07](images/notebook07.png)
+<figure>
+  <figcaption>Ejecute las consultas y revise los resultados del análisis de la capa Silver.</figcaption>
+  <img src="aidataplatform/images/notebook07.png" alt="Ejecute las consultas y revise los resultados del análisis de la capa Silver.">
+</figure>
 
 ## **4️⃣ Creación de la capa Gold**
 
@@ -359,9 +409,12 @@ df_gold.show(truncate=False)
 
 spark.table("demo.gold.customer_class_agg_review").show(truncate=False)
 ```
-![notebook08](images/notebook08.png)
+<figure>
+  <figcaption>Ejecute el notebook para generar la tabla Gold y validar sus resultados.</figcaption>
+  <img src="aidataplatform/images/notebook08.png" alt="Ejecute el notebook para generar la tabla Gold y validar sus resultados.">
+</figure>
 
-## **5️⃣ Escritura en Autonomous Database**
+## **5️⃣ Escritura en Database**
 
 Por último, replicaremos y escribiremos las tablas `demo.silver.customers_orders` y `demo.gold.customer_class_agg_review` en el Autonomous Database configurado anteriormente. Puede encontrar otros ejemplos en https://github.com/oracle-samples/oracle-aidp-samples/tree/main.
 
@@ -395,7 +448,10 @@ gold_df.write.saveAsTable("adb01.ADMIN.CUSTOMER_CLASS_AGG_REVIEW")
 
 print("Gold carregada com sucesso!")
 ```
-![notebook09](images/notebook09.png)
+<figure>
+  <figcaption>Ejecute el notebook y confirme que las tablas se copiaron al Autonomous Database.</figcaption>
+  <img src="aidataplatform/images/notebook09.png" alt="Ejecute el notebook y confirme que las tablas se copiaron al Autonomous Database.">
+</figure>
 
 Como prueba, cree una nueva celda y consulte las tablas recién cargadas en Autonomous Database. Copie y pegue el siguiente código:
 
@@ -414,7 +470,10 @@ alh_df_gold = spark.read.format("aidataplatform") \
 
 alh_df_gold.show()
 ```
-![notebook10](images/notebook10.png)
+<figure>
+  <figcaption>Ejecute las consultas de prueba y compruebe los datos publicados.</figcaption>
+  <img src="aidataplatform/images/notebook10.png" alt="Ejecute las consultas de prueba y compruebe los datos publicados.">
+</figure>
 
 ## **6️⃣ Orquestación con Workflow**
 
@@ -423,14 +482,19 @@ Por último, en el panel izquierdo, haga clic en **Workflow > Create Job**, así
 ``` text
 notebook_bronze  ->  notebook_silver  ->  notebook_gold  ->  notebook_adb
 ```
-
-![workflow01](images/workflow01.png)
+<figure>
+  <figcaption>Verifique que las cuatro tareas estén conectadas en secuencia.</figcaption>
+  <img src="aidataplatform/images/workflow01.png" alt="Verifique que las cuatro tareas estén conectadas en secuencia.">
+</figure>
 
 Ejecute el workflow, siga su avance y valide los resultados de cada actividad en la pestaña run.
 
 ![workflow02](images/workflow02.png)
 
-![workflow03](images/workflow03.png)
+<figure>
+  <figcaption>Revise que todas las tareas finalicen correctamente en la ejecución del workflow.</figcaption>
+  <img src="aidataplatform/images/workflow03.png" alt="Revise que todas las tareas finalicen correctamente en la ejecución del workflow.">
+</figure>
 
 Si desea programar la ejecución del workflow, puede hacerlo desde la pestaña de configuración del job mediante **Details** y **Schedule**. También puede invocar el job mediante API y SDK.
 
@@ -512,6 +576,8 @@ En sessions puede ver las sesiones activas y el uso de tokens.
 
 En métricas puede obtener una vista general del entorno.
 
+Revise las métricas de ejecución y el uso del agent.
+
 ![agent13](images/agent13.png)
 
 ------------------------------------------------------------------------
@@ -527,7 +593,7 @@ En métricas puede obtener una vista general del entorno.
 - **Autora colaboradora** - Isabelle Anjos
 - **Última actualización** - Agosto de 2026
 
-## 🛡️ Declaración de puerto seguro (Safe Harbor)
+## 🛡️ Safe Harbor
 
 El tutorial presentado tiene por objeto describir la dirección general de nuestros productos. Se ofrece únicamente con fines informativos y no puede incorporarse a un contrato. No constituye un compromiso de entrega de ningún material, código o funcionalidad, ni debe considerarse para decisiones de compra. El desarrollo, lanzamiento, fecha de disponibilidad y precio de las funcionalidades o recursos de los productos Oracle descritos están sujetos a cambios y son de exclusiva discreción de Oracle Corporation.
 

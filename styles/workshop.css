@@ -1,0 +1,342 @@
+:root {
+    --fixed-footer-height: 2.5rem;
+    --floating-control-size: 2.75rem;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+#module-content [id] {
+    scroll-margin-top: 3.5rem;
+}
+
+#module-content figure {
+    box-sizing: border-box;
+    display: grid !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    max-width: 100%;
+    width: 100%;
+}
+
+#module-content figure > img {
+    justify-self: center;
+}
+
+#module-content img {
+    display: block;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+}
+
+#module-content > article > section > ol {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+#leftNav,
+#contentBox {
+    transition: left 220ms ease, margin-left 220ms ease, width 220ms ease;
+}
+
+#openNav {
+    align-items: center;
+    color: #ffffff;
+    display: inline-flex;
+    justify-content: center;
+    margin-right: 1.25rem;
+    padding: 0;
+    width: 2.75rem;
+}
+
+#openNav .workshop-menu-icon {
+    height: 1.5rem;
+    pointer-events: none;
+    width: 1.5rem;
+}
+
+#livelabs,
+#translate_icon,
+#need_help {
+    display: none !important;
+}
+
+#modalWindow {
+    box-sizing: border-box;
+    padding: 2.5rem 5.5rem 1.5rem;
+    z-index: 2000;
+}
+
+#workshopModalFrame {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    max-width: 100%;
+    position: relative;
+    width: fit-content;
+}
+
+#workshopModalMedia {
+    position: relative;
+    width: fit-content;
+}
+
+#modalCaption {
+    background: #000000;
+    box-sizing: border-box;
+    color: #ffffff;
+    display: block;
+    font-size: 1rem;
+    font-weight: 500;
+    height: auto;
+    line-height: 1.4;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    padding: 0.75rem 1rem;
+    position: static;
+    text-align: center;
+    transform: none;
+    white-space: normal;
+    width: var(--modal-image-width, 100%);
+}
+
+#modalImg {
+    display: block;
+    height: auto;
+    max-height: calc(100vh - 8rem);
+    max-width: calc(100vw - 11rem);
+    position: static;
+    width: auto;
+}
+
+#modalClose {
+    z-index: 1;
+}
+
+.workshop-modal-navigation {
+    align-items: center;
+    background: #000000;
+    border: 0;
+    border-radius: 0;
+    bottom: 0;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 2rem;
+    height: auto;
+    justify-content: center;
+    line-height: 1;
+    padding: 0 0 0.2rem;
+    position: absolute;
+    top: 0;
+    width: 3rem;
+}
+
+.workshop-modal-navigation:hover:not(:disabled) {
+    background: #5a5a5a;
+}
+
+.workshop-modal-navigation:focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 3px;
+}
+
+.workshop-modal-navigation:disabled {
+    background: #000000;
+    color: transparent;
+    cursor: default;
+    opacity: 1;
+}
+
+#modalPrevious {
+    left: -3rem;
+}
+
+#modalNext {
+    right: -3rem;
+}
+
+body:has(#modalWindow.show) .hol-Footer > .hol-Footer-topLink {
+    display: none;
+}
+
+.workshop-alert {
+    align-items: flex-start;
+    background: #fff3cd;
+    border: 0;
+    border-left: 0.375rem solid #d39e00;
+    box-sizing: border-box;
+    color: #3f3100;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    margin: 1.5rem 0;
+    max-width: none;
+    padding: 1.25rem 1.5rem;
+    text-align: left;
+    width: 100%;
+}
+
+.workshop-alert-icon {
+    color: #d39e00;
+    flex: 0 0 1.75rem;
+    height: 1.75rem;
+    width: 1.75rem;
+}
+
+.workshop-alert-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    min-width: 0;
+}
+
+.workshop-alert-copy p {
+    margin: 0;
+}
+
+#container {
+    padding-bottom: var(--fixed-footer-height);
+}
+
+.hol-Footer {
+    bottom: 0;
+    border-top: 0;
+    box-sizing: border-box;
+    height: var(--fixed-footer-height);
+    left: 0;
+    position: fixed;
+    right: 0;
+    width: auto;
+    z-index: 1000;
+}
+
+#footer-banner {
+    background-image: none;
+    box-sizing: border-box;
+    height: 100%;
+    padding-top: 0;
+}
+
+#footer-banner .footer-row,
+#footer-banner .footer-content {
+    box-sizing: border-box;
+    height: 100%;
+    min-height: 0;
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+#footer-banner .footer-content {
+    align-items: center;
+    display: flex;
+}
+
+#footer-banner .footer-links {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.hol-Footer > .hol-Footer-leftLink,
+.hol-Footer > .hol-Footer-rightLink {
+    display: none !important;
+}
+
+.hol-Footer > .hol-Footer-topLink {
+    align-items: center;
+    animation: floating-control-in 220ms ease-out both;
+    background: #d9d9d9;
+    background-image: none;
+    border: 0;
+    border-radius: 0;
+    bottom: calc(var(--fixed-footer-height) + 2rem);
+    box-shadow: none;
+    color: #000000;
+    display: inline-flex;
+    height: var(--floating-control-size);
+    justify-content: center;
+    overflow: hidden;
+    padding: 0;
+    position: fixed;
+    right: 1.25rem;
+    text-decoration: none;
+    width: var(--floating-control-size);
+}
+
+.hol-Footer > .hol-Footer-topLink .workshop-top-icon {
+    height: 1.5rem;
+    pointer-events: none;
+    width: 1.5rem;
+}
+
+.hol-Footer > .hol-Footer-topLink:hover {
+    background: #bdbdbd;
+}
+
+.hol-Footer > .hol-Footer-topLink:focus-visible {
+    outline: 3px solid #1f7aea;
+    outline-offset: 3px;
+}
+
+@keyframes floating-control-in {
+    from {
+        opacity: 0;
+        transform: translateY(0.5rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .hol-Footer > .hol-Footer-topLink {
+        animation: none;
+    }
+
+    #leftNav,
+    #contentBox {
+        transition: none;
+    }
+}
+
+@media (max-width: 40rem) {
+    :root {
+        --fixed-footer-height: 6.5rem;
+    }
+
+    .hol-Footer > .hol-Footer-topLink {
+        right: 0.75rem;
+    }
+
+    #modalWindow {
+        padding: 2.75rem 3.75rem 1rem;
+    }
+
+    #modalImg {
+        max-width: calc(100vw - 7.5rem);
+    }
+
+    .workshop-modal-navigation {
+        width: 2.5rem;
+    }
+
+    #modalPrevious {
+        left: -2.5rem;
+    }
+
+    #modalNext {
+        right: -2.5rem;
+    }
+}

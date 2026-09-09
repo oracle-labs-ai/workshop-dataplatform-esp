@@ -1,2 +1,7 @@
 # Las presentaciones se publicarán gradualmente; no forman parte de esta entrega inicial.
 
+# Artefactos de validación local; no forman parte del sitio publicado.
+.sentrux/baseline.json
+graphify-out/
+scripts/__pycache__/
+

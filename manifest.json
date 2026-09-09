@@ -3,15 +3,15 @@
   "help": " ",
 	"tutorials": [
     {
-      "title": "Configuración del entorno de laboratorio",
+      "title": "Configuracion del Entorno",
       "filename": "0-pt-config-lab/0-pt-config-lab.md"
     },
     {
-      "title": "Laboratorio 1 - OCI AI Data Platform",
+      "title": "AI Data Platform Workbench",
       "filename": "aidataplatform/aidataplatform.md"
     },
     {
-      "title": "Laboratorio 2 - Oracle Autonomous Database",
+      "title": "Oracle AI Database 26ai",
       "filename": "autonomousdb/autonomousdb.md"
     }
   ]

@@ -13,6 +13,7 @@
     <script src="https://oracle-livelabs.github.io/common/redwood-hol/js/main.min.js"></script>
 
     <link rel="stylesheet" href="https://oracle-livelabs.github.io/common/redwood-hol/css/style.min.css" />
+    <link rel="stylesheet" href="styles/workshop.css" />
     <link rel="shortcut icon" href="https://oracle-livelabs.github.io/common/redwood-hol/img/favicon.ico" />
 </head>
 
@@ -24,7 +25,9 @@
             <div class="hol-Header-actions">
                 <button id="openNav" class="hol-Header-button hol-Header-button--menu rightNav" aria-label="Abrir menú"
                     title="Abrir menú">
-                    <span class="hol-Header-toggleIcon"></span>
+                    <svg class="workshop-menu-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                        <path d="M4 6H20M4 12H14M4 18H9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
                 </button>
             </div>
         </div>
@@ -40,7 +43,11 @@
     </div>
 
       <footer class="hol-Footer">
-        <a class="hol-Footer-topLink" href="#top">Volver al inicio</a>
+        <a class="hol-Footer-topLink" href="#top" aria-label="Volver al inicio">
+          <svg class="workshop-top-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+            <path d="M8 12L12 8M12 8L16 12M12 8V20M4 4H20" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
         <div id="footer-banner"><div class="footer-row">
           <div class="footer-content"><ul class="footer-links">
               <li><a href="https://docs.oracle.com/pls/topic/lookup?ctx=en/legal&id=cpyr" target="_blank" aria-label="Open a new window to Oracle legal notices" data-lbl="copyright">© Oracle</a></li>
@@ -57,6 +64,8 @@
         </div>
       </div>
     </footer>
+    <script src="scripts/hash-navigation.js"></script>
+    <script src="scripts/image-modal.js"></script>
 </body>
 
 </html>

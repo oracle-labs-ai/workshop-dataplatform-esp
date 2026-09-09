@@ -33,15 +33,22 @@ El objetivo principal de Oracle Free Tier es **permitirle probar y desarrollar s
 ### _**Disfrute su experiencia en Oracle Cloud.**_
 
 
-## 1️⃣ Creación de la cuenta Oracle Free Tier
+## 1️⃣ Creacion de Oracle Free Tier
 
 Visite [www.oracle.com/cloud/free](https://www.oracle.com/cloud/free/) y haga clic en **"Start for Free"**.
 
    ![Free Tier](images/free-tier.png " ")
 
 
-> <span style="background-color:#FFCCCC; color:#D33E43;"><strong>❗ATENCIÓN❗</strong></span><br><br>
-> <font color=#D33E43> Use el correo electrónico registrado para el evento durante el proceso de creación de la cuenta Free Trial.</font> <br>
+<aside class="workshop-alert" role="note" aria-label="Atención">
+  <svg class="workshop-alert-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M11 13C11 13.5523 11.4477 14 12 14C12.5523 14 13 13.5523 13 13V10C13 9.44772 12.5523 9 12 9C11.4477 9 11 9.44772 11 10V13ZM13 15.9888C13 15.4365 12.5523 14.9888 12 14.9888C11.4477 14.9888 11 15.4365 11 15.9888V16C11 16.5523 11.4477 17 12 17C12.5523 17 13 16.5523 13 16V15.9888ZM9.37735 4.66136C10.5204 2.60393 13.4793 2.60393 14.6223 4.66136L21.2233 16.5431C22.3341 18.5427 20.8882 21 18.6008 21H5.39885C3.11139 21 1.66549 18.5427 2.77637 16.5431L9.37735 4.66136Z" fill="currentColor" />
+  </svg>
+  <div class="workshop-alert-copy">
+    <strong>Atención.</strong>
+    <p>Use el correo electrónico registrado para el evento durante el proceso de creación de la cuenta Free Trial.</p>
+  </div>
+</aside>
 
 Complete la información de **Country, First Name, Last Name y Email**. A continuación, haga clic en **Verify my Email**.
 
@@ -57,9 +64,17 @@ Recibirá un correo electrónico similar al ejemplo siguiente. **Si no lo encuen
 
 ![Verify Account Email](images/verify-account.png " ")
 
-> <span style="background-color:#FFCCCC; color:#D33E43;"><strong>❗ATENCIÓN❗</strong></span><br><br>
-> <font color=#D33E43> Complete los pasos siguientes en un plazo de **30 minutos** para evitar que se reinicie el enlace enviado por correo electrónico. **Evite hacer clic en el enlace más de una vez**, ya que puede producirse un mensaje de error.</font> <br>
-> ![Forbidden](images/forbidden.png " ")
+<aside class="workshop-alert" role="note" aria-label="Atención">
+  <svg class="workshop-alert-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M11 13C11 13.5523 11.4477 14 12 14C12.5523 14 13 13.5523 13 13V10C13 9.44772 12.5523 9 12 9C11.4477 9 11 9.44772 11 10V13ZM13 15.9888C13 15.4365 12.5523 14.9888 12 14.9888C11.4477 14.9888 11 15.4365 11 15.9888V16C11 16.5523 11.4477 17 12 17C12.5523 17 13 16.5523 13 16V15.9888ZM9.37735 4.66136C10.5204 2.60393 13.4793 2.60393 14.6223 4.66136L21.2233 16.5431C22.3341 18.5427 20.8882 21 18.6008 21H5.39885C3.11139 21 1.66549 18.5427 2.77637 16.5431L9.37735 4.66136Z" fill="currentColor" />
+  </svg>
+  <div class="workshop-alert-copy">
+    <strong>Atención.</strong>
+    <p>Complete los pasos siguientes en un plazo de <strong>30 minutos</strong> para evitar que se reinicie el enlace enviado por correo electrónico. <strong>Evite hacer clic en el enlace más de una vez</strong>, ya que puede producirse un mensaje de error.</p>
+  </div>
+</aside>
+
+![Forbidden](images/forbidden.png " ")
 
 A continuación, cree una contraseña que cumpla las siguientes reglas:
    - Debe tener al menos **8 caracteres**, entre ellos **1 letra minúscula**, **1 letra mayúscula**, **1 número** y **1 carácter especial**.
@@ -93,7 +108,7 @@ Complete la información de dirección. Cuando haya llenado todos los campos, ha
 
 ![Payment Information](images/agreement.png " ")
 
-## 3️⃣ Configuración de la autenticación de dos factores
+## 3️⃣ Autentificacion de dos factores
 
 Después de iniciar el Free Trial, espere mientras Oracle configura su cuenta. Aparecerá el mensaje **"Please wait while we finish setting up your account"**. Este proceso puede tardar algunos minutos.
 
@@ -157,7 +172,7 @@ Con la cuenta Oracle Cloud Free Tier configurada, ya puede continuar con cualqui
 - **Autora colaboradora** - Isabelle Anjos
 - **Última actualización** - Agosto de 2026
 
-## 🛡️ Declaración de puerto seguro (Safe Harbor)
+## 🛡️ Safe Harbor
 
 El tutorial presentado tiene por objeto describir la dirección general de nuestros productos. Se ofrece únicamente con fines informativos y no puede incorporarse a un contrato. No constituye un compromiso de entrega de ningún material, código o funcionalidad, ni debe considerarse para decisiones de compra. El desarrollo, lanzamiento, fecha de disponibilidad y precio de las funcionalidades o recursos de los productos Oracle descritos están sujetos a cambios y son de exclusiva discreción de Oracle Corporation.
 

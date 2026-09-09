@@ -1,30 +1,36 @@
-# Oracle 26ai Autonomous Database
+# Oracle AI Database 26ai
 
 ## 🎯 **Objetivos**
 
-Demostrar en la práctica cómo utilizar algunas funcionalidades de Oracle Autonomous Database para atender cargas de trabajo de Data Warehouse.
+Demostrar en la práctica cómo utilizar algunas funcionalidades de Oracle AI Database 26ai para atender cargas de trabajo de Data Warehouse.
 
 Aprenderá a:
 
-- Crear y configurar nuevos esquemas y usuarios en Oracle Autonomous Database.
+- Crear y configurar nuevos esquemas y usuarios en Oracle AI Database 26ai.
 - Realizar y orquestar transformaciones mediante procedures y Oracle Scheduler.
 - Importar y configurar una aplicación de Select AI.
 - Configurar y probar Data Redaction.
 - Configurar ORDS para consultar conjuntos de datos.
 
->### ⚠️ **ATENCIÓN**: Recomendamos completar primero la práctica guiada de AI Data Platform.
+<aside class="workshop-alert" role="note" aria-label="Atención">
+  <svg class="workshop-alert-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M11 13C11 13.5523 11.4477 14 12 14C12.5523 14 13 13.5523 13 13V10C13 9.44772 12.5523 9 12 9C11.4477 9 11 9.44772 11 10V13ZM13 15.9888C13 15.4365 12.5523 14.9888 12 14.9888C11.4477 14.9888 11 15.4365 11 15.9888V16C11 16.5523 11.4477 17 12 17C12.5523 17 13 16.5523 13 16V15.9888ZM9.37735 4.66136C10.5204 2.60393 13.4793 2.60393 14.6223 4.66136L21.2233 16.5431C22.3341 18.5427 20.8882 21 18.6008 21H5.39885C3.11139 21 1.66549 18.5427 2.77637 16.5431L9.37735 4.66136Z" fill="currentColor" />
+  </svg>
+  <div class="workshop-alert-copy">
+    <strong>Atención.</strong>
+    <p>Recomendamos completar primero la práctica guiada de AI Data Platform Workbench.</p>
+  </div>
+</aside>
 
 ### _**Disfrute su experiencia en Oracle Cloud.**_
 
 ## 📌 Introducción
 
->**Esta práctica guiada muestra cómo Oracle Autonomous Database 26ai puede complementar AI Data Platform, aportando capacidades para atender cargas de trabajo de Data Warehouse de forma integrada, segura y automatizada. A lo largo del workshop aprenderá a crear y configurar esquemas y usuarios; realizar y orquestar transformaciones de datos con procedures y Oracle Scheduler; importar y configurar aplicaciones con Select AI; implementar Data Redaction para proteger información sensible, y configurar ORDS para publicar consultas sobre conjuntos de datos. El objetivo es brindar experiencia práctica con funcionalidades esenciales de Autonomous Database en Oracle Cloud.**
+Esta práctica guiada muestra cómo Oracle AI Database 26ai puede complementar AI Data Platform, aportando capacidades para atender cargas de trabajo de Data Warehouse de forma integrada, segura y automatizada. A lo largo del workshop aprenderá a crear y configurar esquemas y usuarios; realizar y orquestar transformaciones de datos con procedures y Oracle Scheduler; importar y configurar aplicaciones con Select AI; implementar Data Redaction para proteger información sensible, y configurar ORDS para publicar consultas sobre conjuntos de datos. El objetivo es brindar experiencia práctica con funcionalidades esenciales de Oracle AI Database 26ai en Oracle Cloud.
 
-# **Parte 2 - Práctica guiada de Oracle Autonomous Database**
+## **1️⃣ Creación del esquema**
 
-## **1️⃣ Creación del esquema y preparación del entorno**
-
-Utilice la instancia de Oracle Autonomous Database creada en la práctica guiada de OCI AI Data Platform.
+Utilice la instancia de Oracle AI Database 26ai creada en la práctica guiada de OCI AI Data Platform.
 
 ![Link AIDP](images/link_adb.png)
 
@@ -34,11 +40,19 @@ Haga clic en **Database Users**.
 
 Haga clic en **+ Crear usuario**, cree el usuario `AI` y conceda los grants como se muestra en la captura de pantalla.
 
-> **⚠️ ATENCIÓN:** Se sugiere utilizar la contraseña **WORKSHOPsec2019##**; no obstante, puede elegir otra si lo desea. Para las demás configuraciones, puede usar los valores predeterminados y hacer clic en **Create**.
+<aside class="workshop-alert" role="note" aria-label="Atención">
+  <svg class="workshop-alert-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M11 13C11 13.5523 11.4477 14 12 14C12.5523 14 13 13.5523 13 13V10C13 9.44772 12.5523 9 12 9C11.4477 9 11 9.44772 11 10V13ZM13 15.9888C13 15.4365 12.5523 14.9888 12 14.9888C11.4477 14.9888 11 15.4365 11 15.9888V16C11 16.5523 11.4477 17 12 17C12.5523 17 13 16.5523 13 16V15.9888ZM9.37735 4.66136C10.5204 2.60393 13.4793 2.60393 14.6223 4.66136L21.2233 16.5431C22.3341 18.5427 20.8882 21 18.6008 21H5.39885C3.11139 21 1.66549 18.5427 2.77637 16.5431L9.37735 4.66136Z" fill="currentColor" />
+  </svg>
+  <div class="workshop-alert-copy">
+    <strong>Atención.</strong>
+    <p>Se sugiere utilizar la contraseña <strong>WORKSHOPsec2019##</strong>; no obstante, puede elegir otra si lo desea. Para las demás configuraciones, puede usar los valores predeterminados y hacer clic en <strong>Create</strong>.</p>
+  </div>
+</aside>
 
 ![adb_user](images/adb_user.png)
 
-## **2️⃣ Configurar y orquestar transformaciones con procedures y Oracle Scheduler**
+## **2️⃣ Procedure y Oracle Scheduler**
 
 En el menú de la esquina superior izquierda, haga clic en **SQL**.
 
@@ -170,9 +184,9 @@ Cuando termine, haga clic en la pestaña de historial y reporte para obtener una
 
 ![scheduler_04](images/scheduler_04.png)
 
-## **3️⃣ Importar y configurar la aplicación Select AI**
+## **3️⃣ Configurar Select AI**
 
-Haga clic en el ícono de la esquina superior izquierda y seleccione apex. Inicie sesión de nuevo con el usuario ADMIN y la contraseña configurada al crear Autonomous Database.
+Haga clic en el ícono de la esquina superior izquierda y seleccione apex. Inicie sesión de nuevo con el usuario ADMIN y la contraseña configurada al crear Oracle AI Database 26ai.
 
 ![apex_link](images/apex_link.png)
 
@@ -421,7 +435,7 @@ Copie y pegue la URL en el navegador web. Verá los datos, pero el correo electr
 
 ## **✅ Laboratorio finalizado**
 
-¡Felicitaciones! Completó la práctica guiada de **Oracle Autonomous**. Aprendió a usar las tablas cargadas por AI Data Platform para orquestar y realizar otras transformaciones con procedures y scheduler, importó y configuró una aplicación apex que demuestra el uso de Select AI y, finalmente, creó un endpoint REST con una regla de redacción.
+¡Felicitaciones! Completó la práctica guiada de **Oracle AI Database 26ai**. Aprendió a usar las tablas cargadas por AI Data Platform para orquestar y realizar otras transformaciones con procedures y scheduler, importó y configuró una aplicación apex que demuestra el uso de Select AI y, finalmente, creó un endpoint REST con una regla de redacción.
 
 
 ## 👥 Agradecimientos
@@ -430,7 +444,7 @@ Copie y pegue la URL en el navegador web. Verá los datos, pero el correo electr
 - **Autora colaboradora** - Isabelle Anjos
 - **Última actualización** - Agosto de 2026
 
-## 🛡️ Declaración de puerto seguro (Safe Harbor)
+## 🛡️ Safe Harbor
 
 El tutorial presentado tiene por objeto describir la dirección general de nuestros productos. Se ofrece únicamente con fines informativos y no puede incorporarse a un contrato. No constituye un compromiso de entrega de ningún material, código o funcionalidad, ni debe considerarse para decisiones de compra. El desarrollo, lanzamiento, fecha de disponibilidad y precio de las funcionalidades o recursos de los productos Oracle descritos están sujetos a cambios y son de exclusiva discreción de Oracle Corporation.
 
