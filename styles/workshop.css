@@ -55,25 +55,32 @@
     position: fixed;
     right: 1.25rem;
     text-decoration: none;
-    text-indent: -9999px;
     width: var(--floating-control-size);
+}
+
+.hol-Footer > .hol-Footer-topLink {
+    border-radius: 0;
+    bottom: calc(var(--fixed-footer-height) + 2rem);
+    color: #000000;
+}
+
+.hol-Footer > .hol-Footer-topLink .workshop-top-icon {
+    height: 1.5rem;
+    pointer-events: none;
+    width: 1.5rem;
 }
 
 .hol-Footer > .hol-Footer-leftLink.show {
     bottom: calc(var(--fixed-footer-height) + var(--floating-control-size) + (var(--floating-control-gap) * 2));
+    text-indent: -9999px;
 }
 
-.hol-Footer > .hol-Footer-topLink::after,
 .hol-Footer > .hol-Footer-leftLink.show::after {
     font-family: Arial, sans-serif;
     font-size: 1.5rem;
     font-weight: 700;
     line-height: 1;
     text-indent: 0;
-}
-
-.hol-Footer > .hol-Footer-topLink::after {
-    content: "↑";
 }
 
 .hol-Footer > .hol-Footer-leftLink.show::after {
