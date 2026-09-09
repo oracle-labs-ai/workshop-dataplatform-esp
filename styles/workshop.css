@@ -72,7 +72,7 @@ html {
     max-height: 100%;
     max-width: 100%;
     position: relative;
-    width: var(--modal-image-width, fit-content);
+    width: fit-content;
 }
 
 #workshopModalMedia {
@@ -97,7 +97,7 @@ html {
     text-align: center;
     transform: none;
     white-space: normal;
-    width: 100%;
+    width: var(--modal-image-width, 100%);
 }
 
 #modalImg {

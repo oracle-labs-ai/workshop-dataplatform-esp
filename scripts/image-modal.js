@@ -58,7 +58,7 @@ if (typeof document !== "undefined") {
             if (!frame) return;
 
             if (height) frame.style.setProperty("--modal-image-height", `${height}px`);
-            if (width) frame.style.setProperty("--modal-image-width", `${width}px`);
+            if (width) frame.querySelector("#modalCaption")?.style.setProperty("--modal-image-width", `${width}px`);
         };
 
         const observeNavigationHeight = (modalImage) => {
