@@ -15,16 +15,26 @@ if (typeof document !== "undefined") {
 
         const getDescription = (image) => {
             const figure = image.closest("figure");
-            const imageBlock = figure?.parentElement?.matches("p, li")
+            const textBlock = figure?.parentElement?.matches("p, li")
                 ? figure.parentElement
-                : figure ?? image.closest("p, li");
+                : image.parentElement?.matches("p, li") ? image.parentElement : null;
+            const imageBlock = textBlock ?? figure ?? image.closest("p, li");
+            const anchor = figure ?? image;
+            let inlineText = "";
+
+            if (textBlock) {
+                const range = document.createRange();
+                range.selectNodeContents(textBlock);
+                range.setEndBefore(anchor);
+                inlineText = range.toString().trim();
+            }
             let previous = imageBlock?.previousElementSibling;
 
             while (previous && !previous.matches("p, li, blockquote")) {
                 previous = previous.previousElementSibling;
             }
 
-            return previous?.textContent.trim() || image.alt || "Imagen del laboratorio";
+            return inlineText || previous?.textContent.trim() || image.alt || "Imagen del laboratorio";
         };
 
         const updateNavigation = (modal) => {
