@@ -1,4 +1,4 @@
-# Oracle 26ai Autonomous Database
+# Oracle AI Database 26ai
 
 ## 🎯 **Objetivos**
 
