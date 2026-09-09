@@ -61,28 +61,38 @@ html {
 
 #modalWindow {
     box-sizing: border-box;
-    padding: 5rem 5.5rem 1.5rem;
+    padding: 2.5rem 5.5rem 1.5rem;
     z-index: 2000;
 }
 
+#workshopModalFrame {
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    max-width: 100%;
+}
+
 #modalCaption {
+    background: #000000;
+    box-sizing: border-box;
     color: #ffffff;
     display: block;
     font-size: 1rem;
     font-weight: 500;
     height: auto;
-    left: 50%;
     line-height: 1.4;
-    max-width: 70rem;
-    position: absolute;
+    max-width: none;
+    padding: 0.75rem 1rem;
+    position: static;
     text-align: center;
-    top: 1.25rem;
-    transform: translateX(-50%);
-    width: calc(100% - 10rem);
+    transform: none;
+    width: 100%;
 }
 
 #modalImg {
-    max-height: 100%;
+    align-self: center;
+    max-height: calc(100vh - 8rem);
     max-width: 100%;
     position: static;
 }
@@ -93,9 +103,9 @@ html {
 
 .workshop-modal-navigation {
     align-items: center;
-    background: rgba(0, 0, 0, 0.72);
+    background: #000000;
     border: 1px solid rgba(255, 255, 255, 0.65);
-    border-radius: 50%;
+    border-radius: 0;
     color: #ffffff;
     cursor: pointer;
     display: inline-flex;
@@ -291,11 +301,7 @@ body:has(#modalWindow.show) .hol-Footer > .hol-Footer-topLink {
     }
 
     #modalWindow {
-        padding: 5rem 3.75rem 1rem;
-    }
-
-    #modalCaption {
-        width: calc(100% - 7.5rem);
+        padding: 2.75rem 3.75rem 1rem;
     }
 
     .workshop-modal-navigation {
