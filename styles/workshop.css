@@ -53,6 +53,12 @@ html {
     width: 1.5rem;
 }
 
+#livelabs,
+#translate_icon,
+#need_help {
+    display: none !important;
+}
+
 .workshop-alert {
     align-items: flex-start;
     background: #fff3cd;
