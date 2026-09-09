@@ -18,7 +18,7 @@ Aprenderá a:
   </svg>
   <div class="workshop-alert-copy">
     <strong>Atención.</strong>
-    <p>Recomendamos completar primero la práctica guiada de AI Data Platform.</p>
+    <p>Recomendamos completar primero la práctica guiada de AI Data Platform Workbench.</p>
   </div>
 </aside>
 
