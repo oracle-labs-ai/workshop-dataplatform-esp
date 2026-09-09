@@ -53,8 +53,12 @@ if (typeof document !== "undefined") {
                 activationLine,
             )];
 
-            items.forEach((item) => item.classList.remove("active"));
-            active.item.classList.add("active");
+            items.forEach((item) => {
+                const shouldBeActive = item === active.item;
+                if (item.classList.contains("active") !== shouldBeActive) {
+                    item.classList.toggle("active", shouldBeActive);
+                }
+            });
         };
 
         const scheduleActiveItem = () => {
@@ -87,7 +91,12 @@ if (typeof document !== "undefined") {
 
         const sectionObserver = new MutationObserver(scheduleActiveItem);
         sectionObserver.observe(content, { childList: true, subtree: true });
-        sectionObserver.observe(toc, { childList: true, subtree: true });
+        sectionObserver.observe(toc, {
+            attributes: true,
+            attributeFilter: ["class"],
+            childList: true,
+            subtree: true,
+        });
         scheduleActiveItem();
 
         if (window.location.hash && !scrollCurrentHash()) {
