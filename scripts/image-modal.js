@@ -92,7 +92,7 @@ if (typeof document !== "undefined") {
         };
 
         const returnToActiveImage = () => {
-            requestAnimationFrame(() => activeImage?.scrollIntoView({ behavior: "smooth", block: "center" }));
+            setTimeout(() => activeImage?.scrollIntoView({ behavior: "smooth", block: "center" }));
         };
 
         const preserveModalUntilClosed = () => {
@@ -106,8 +106,13 @@ if (typeof document !== "undefined") {
                     event.stopImmediatePropagation();
                 }
             }, true);
-            document.getElementById("modalClose")?.addEventListener("click", returnToActiveImage);
         };
+
+        document.addEventListener("click", (event) => {
+            if (event.target instanceof Element && event.target.closest("#modalClose")) {
+                returnToActiveImage();
+            }
+        }, true);
 
         const addNavigationButton = (modal, id, label, offset) => {
             let button = modal.querySelector(`#${id}`);
