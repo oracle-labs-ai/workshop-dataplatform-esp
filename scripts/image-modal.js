@@ -54,7 +54,8 @@ if (typeof document !== "undefined") {
 
         const syncNavigationHeight = (modalImage) => {
             const media = modalImage.closest("#workshopModalMedia");
-            if (media) media.style.setProperty("--modal-image-height", `${modalImage.getBoundingClientRect().height}px`);
+            const height = modalImage.getBoundingClientRect().height;
+            if (media && height) media.style.setProperty("--modal-image-height", `${height}px`);
         };
 
         const observeNavigationHeight = (modalImage) => {
