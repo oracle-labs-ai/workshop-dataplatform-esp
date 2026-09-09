@@ -1,5 +1,5 @@
 :root {
-    --fixed-footer-height: 4.5rem;
+    --fixed-footer-height: 2.5rem;
     --floating-control-size: 2.75rem;
 }
 
@@ -74,6 +74,8 @@ html {
 .hol-Footer {
     bottom: 0;
     border-top: 0;
+    box-sizing: border-box;
+    height: var(--fixed-footer-height);
     left: 0;
     position: fixed;
     right: 0;
@@ -83,7 +85,28 @@ html {
 
 #footer-banner {
     background-image: none;
+    box-sizing: border-box;
+    height: 100%;
     padding-top: 0;
+}
+
+#footer-banner .footer-row,
+#footer-banner .footer-content {
+    box-sizing: border-box;
+    height: 100%;
+    min-height: 0;
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+#footer-banner .footer-content {
+    align-items: center;
+    display: flex;
+}
+
+#footer-banner .footer-links {
+    margin-bottom: 0;
+    margin-top: 0;
 }
 
 .hol-Footer > .hol-Footer-leftLink,
