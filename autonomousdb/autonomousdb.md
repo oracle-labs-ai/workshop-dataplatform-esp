@@ -216,33 +216,41 @@ A continuación, haga clic en **SQL Workshop** y **SQL Commands**.
 
 ![apex04](images/apex04.png)
 
-Copie y pegue el siguiente código. Tenga en cuenta que deberá ajustar la sección `create_credential` según los identificadores y la configuración de su entorno.
+Copie y pegue el siguiente código en **SQL Commands**. Antes de ejecutarlo, reemplace `USER_OCID`, `TENANCY_OCID`, `FINGERPRINT_CLAVE` y el contenido de `l_private_key` con los valores de su usuario de OCI.
+
+El bloque está preparado para que pueda pegar la clave privada con saltos de línea. Copie únicamente el contenido de la clave, sin las líneas `-----BEGIN PRIVATE KEY-----` y `-----END PRIVATE KEY-----`; el código elimina automáticamente los saltos de línea antes de crear la credencial.
+
+El ejemplo usa la región de Chicago (`us-chicago-1`). Si su entorno está en otra región, ajuste el valor de `region` dentro de `DBMS_CLOUD_AI.CREATE_PROFILE`. Puede consultar la lista completa en la [documentación oficial de regiones de OCI](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm). Como referencia, São Paulo usa `sa-saopaulo-1` y Ashburn usa `us-ashburn-1`.
 
 ``` sql
+DECLARE
+   l_private_key VARCHAR2(32767) := q'[
+PEGUE_AQUI_LA_CLAVE_PRIVADA_SIN_ENCABEZADO_NI_PIE
+]';
 BEGIN
    DBMS_CLOUD.CREATE_CREDENTIAL (
        credential_name => 'OBJ_STORE_CRED',
        user_ocid       => 'USER_OCID',
        tenancy_ocid    => 'TENANCY_OCID',
-       private_key     => 'PRIVATE_KEY_SIN_ENCABEZADO_PIE',
+       private_key     => REPLACE(REPLACE(TRIM(l_private_key), CHR(13), ''), CHR(10), ''),
        fingerprint     => 'FINGERPRINT_CLAVE');
 END;
 /
 
-begin
-   dbms_cloud_ai.create_profile(
-    profile_name => 'OCI_GENAI',
-    attributes   => '{"provider": "oci",
-        "model":"meta.llama-3.3-70b-instruct" ,
-        "credential_name": "OBJ_STORE_CRED",
-        "object_list": [
-            {"owner": "AI"}
-            ],
-        "region": "sa-saopaulo-1",
-        "comments":"true"
-    }'
+BEGIN
+   DBMS_CLOUD_AI.CREATE_PROFILE(
+     profile_name => 'OCI_GENAI',
+     attributes   => '{"provider": "oci",
+         "model":"meta.llama-3.3-70b-instruct" ,
+         "credential_name": "OBJ_STORE_CRED",
+         "object_list": [
+             {"owner": "AI"}
+             ],
+         "region": "us-chicago-1",
+         "comments":"true"
+     }'
    );
-end;
+END;
 /
 ```
 
