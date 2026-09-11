@@ -410,8 +410,8 @@ Para importar la aplicación, siga estos pasos:
 <details>
   <summary><strong>¿Necesita ayuda con la importación?</strong></summary>
 
-  <p>Si se pierde durante el asistente de importación, abra esta ayuda y siga la secuencia visual paso a paso.</p>
-  <img src="images/image-importapp.png" alt="Paso a paso para importar la aplicación APEX de Select AI" />
+  <p>Si se pierde durante el asistente de importación, abra la guía visual en una pestaña nueva y siga la secuencia paso a paso.</p>
+  <p><a href="https://oracle-labs-ai.github.io/workshop-dataplatform-esp/autonomousdb/images/image-importapp.png" target="_blank" rel="noopener noreferrer">Abrir guía visual de importación en una pestaña nueva</a></p>
 </details>
 
 ![apex08](images/apex08.png)
