@@ -38,7 +38,7 @@ Haga clic en **Database Users**.
 
 ![adb_instance](images/adb_instance.png)
 
-Haga clic en **+ Crear usuario**, cree el usuario `AI` y conceda los privilegios como se muestra en la captura de pantalla.
+En **Database Users**, haga clic en **+ Crear usuario**. En el formulario, cree el usuario `AI` y conceda los privilegios indicados en la captura de pantalla. Este usuario será el esquema donde se crearán los objetos usados por Select AI, APEX y ORDS.
 
 <aside class="workshop-alert" role="note" aria-label="Atención">
   <svg class="workshop-alert-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
@@ -46,7 +46,7 @@ Haga clic en **+ Crear usuario**, cree el usuario `AI` y conceda los privilegios
   </svg>
   <div class="workshop-alert-copy">
     <strong>Atención.</strong>
-    <p>Se sugiere utilizar la contraseña <strong>WORKSHOPsec2019##</strong>; no obstante, puede elegir otra si lo desea. Para las demás configuraciones, puede usar los valores predeterminados y hacer clic en <strong>Create</strong>.</p>
+    <p>Se sugiere utilizar la contraseña <code>WORKSHOPsec2019##</code>; no obstante, puede elegir otra si lo desea. Para las demás configuraciones, puede usar los valores predeterminados y hacer clic en <strong>Create</strong>.</p>
   </div>
 </aside>
 
@@ -194,64 +194,81 @@ Cuando termine, haga clic en la pestaña de historial y reporte para obtener una
 
 ## **3️⃣ Configurar Select AI**
 
-Haga clic en el ícono de la esquina superior izquierda y seleccione **APEX**. Inicie sesión de nuevo con el usuario `ADMIN` y la contraseña configurada al crear Oracle AI Database 26ai.
+Abra nuevamente el menú de la esquina superior izquierda y seleccione **APEX**. Inicie sesión con el usuario `ADMIN` y la contraseña definida al crear Oracle AI Database 26ai.
 
 ![apex_link](images/apex_link.png)
 
-Haga clic en el botón **Create Workspace**, en la esquina derecha de la pantalla, y seleccione **Existing Schema**.
+En APEX, haga clic en **Create Workspace**, en la esquina derecha de la pantalla. Luego seleccione la opción **Existing Schema** para crear un workspace sobre un esquema que ya existe en la base de datos.
 
 ![apex01](images/apex01.png)
 
-Seleccione el esquema `AI` e ingrese la contraseña del entorno. Recomendamos la contraseña mostrada en la captura; luego haga clic en **Create Workspace**.
+Seleccione el esquema `AI` e ingrese la contraseña configurada para ese usuario. Si siguió la recomendación anterior, use `WORKSHOPsec2019##`. Luego haga clic en **Create Workspace**.
 
 ![apex02](images/apex02.png)
 
-En la parte inferior izquierda de la pantalla, cierre la sesión del entorno.
+Cuando el workspace quede creado, cierre la sesión desde la parte inferior izquierda de la pantalla.
 
 ![apex03](images/apex03.png)
 
-En la pantalla de inicio de sesión, ingrese con el usuario `AI` y la contraseña configurada en la etapa anterior.
+En la pantalla de inicio de sesión de APEX, ingrese con el usuario `AI` y la contraseña configurada en la etapa anterior.
 
-A continuación, haga clic en **SQL Workshop** y **SQL Commands**.
+Dentro del workspace de `AI`, abra **SQL Workshop** y luego **SQL Commands**. Allí ejecutará el bloque que crea la credencial de OCI y el perfil `OCI_GENAI` para Select AI.
 
 ![apex04](images/apex04.png)
 
-Copie y pegue el siguiente código en **SQL Commands**. Antes de ejecutarlo, reemplace `USER_OCID`, `TENANCY_OCID`, `FINGERPRINT_CLAVE` y el contenido de `l_private_key` con los valores de su usuario de OCI.
+Copie y pegue el siguiente bloque en **SQL Commands**. Antes de ejecutarlo, reemplace `USER_OCID`, `TENANCY_OCID`, `FINGERPRINT_CLAVE` y el contenido de `l_private_key` con los valores de su usuario de OCI.
 
-El bloque está preparado para que pueda pegar la clave privada con saltos de línea. Copie únicamente el contenido de la clave, sin las líneas `-----BEGIN PRIVATE KEY-----` y `-----END PRIVATE KEY-----`; el código elimina automáticamente los saltos de línea antes de crear la credencial.
+El bloque está preparado para que pueda pegar la clave privada con saltos de línea usando `q'[...]'`. Copie únicamente el contenido de la clave, sin las líneas `-----BEGIN PRIVATE KEY-----` y `-----END PRIVATE KEY-----`.
+
+En **SQL Commands**, ejecute el bloque exactamente como aparece y no agregue la línea `/` al final. Si incluye `/`, APEX puede mostrar el error `PLS-00103: Encountered the symbol "/"`.
 
 El ejemplo usa la región de Chicago (`us-chicago-1`). Si su entorno está en otra región, ajuste el valor de `region` dentro de `DBMS_CLOUD_AI.CREATE_PROFILE`. Puede consultar la lista completa en la [documentación oficial de regiones de OCI](https://docs.oracle.com/en-us/iaas/Content/General/Concepts/regions.htm). Como referencia, São Paulo usa `sa-saopaulo-1` y Ashburn usa `us-ashburn-1`.
 
 ``` sql
 DECLARE
-   l_private_key VARCHAR2(32767) := q'[
+   l_user_ocid    VARCHAR2(2000)  := 'USER_OCID';
+   l_tenancy_ocid VARCHAR2(2000)  := 'TENANCY_OCID';
+   l_fingerprint  VARCHAR2(200)   := 'FINGERPRINT_CLAVE';
+   l_private_key  VARCHAR2(32767) := q'[
 PEGUE_AQUI_LA_CLAVE_PRIVADA_SIN_ENCABEZADO_NI_PIE
 ]';
 BEGIN
-   DBMS_CLOUD.CREATE_CREDENTIAL (
-       credential_name => 'OBJ_STORE_CRED',
-       user_ocid       => 'USER_OCID',
-       tenancy_ocid    => 'TENANCY_OCID',
-       private_key     => REPLACE(REPLACE(TRIM(l_private_key), CHR(13), ''), CHR(10), ''),
-       fingerprint     => 'FINGERPRINT_CLAVE');
-END;
-/
+   BEGIN
+      DBMS_CLOUD_AI.DROP_PROFILE(
+         profile_name => 'OCI_GENAI',
+         force        => TRUE
+      );
+   EXCEPTION
+      WHEN OTHERS THEN NULL;
+   END;
 
-BEGIN
+   BEGIN
+      DBMS_CLOUD.DROP_CREDENTIAL(credential_name => 'OCI_CRED');
+   EXCEPTION
+      WHEN OTHERS THEN NULL;
+   END;
+
+   DBMS_CLOUD.CREATE_CREDENTIAL(
+      credential_name => 'OCI_CRED',
+      user_ocid       => l_user_ocid,
+      tenancy_ocid    => l_tenancy_ocid,
+      private_key     => l_private_key,
+      fingerprint     => l_fingerprint
+   );
+
    DBMS_CLOUD_AI.CREATE_PROFILE(
-     profile_name => 'OCI_GENAI',
-     attributes   => '{"provider": "oci",
+      profile_name => 'OCI_GENAI',
+      attributes   => '{"provider": "oci",
          "model":"meta.llama-3.3-70b-instruct" ,
-         "credential_name": "OBJ_STORE_CRED",
+         "credential_name": "OCI_CRED",
          "object_list": [
              {"owner": "AI"}
              ],
          "region": "us-chicago-1",
          "comments":"true"
-     }'
+      }'
    );
 END;
-/
 ```
 
 La información para `DBMS_CLOUD.CREATE_CREDENTIAL` se puede obtener en la pestaña de configuración de su usuario de OCI.
@@ -264,13 +281,15 @@ En la pestaña **Tokens and Keys**, cree una **API Key**, descargue la clave pri
 
 A continuación se muestra un ejemplo de cómo completar el código que se debe ejecutar dentro de **APEX**.
 
-![apex05](images/apex05.png)
+![apex05](images/ejemplo-key.png)
 
-Ahora agregaremos comentarios a la tabla `CUSTOMERS_ORDERS` para facilitar el uso de Select AI. En **APEX**, haga clic en **SQL Scripts**.
+### **➡️ Preparar comentarios para Select AI**
+
+Ahora agregaremos comentarios a la tabla `CUSTOMERS_ORDERS`. Este paso es importante porque Select AI usa los comentarios de tablas y columnas como contexto para interpretar mejor las preguntas en lenguaje natural. En **APEX**, abra **SQL Scripts**.
 
 ![apex07](images/apex07.png)
 
-Haga clic en **Create** y pegue el siguiente código. Asígnele el nombre `comentarios_tabla` y luego haga clic en **Run**.
+Haga clic en **Create**, pegue el siguiente código y guarde el script con el nombre `comentarios_tabla`. Después, haga clic en **Run** para aplicar los comentarios sobre la tabla.
 
 ``` sql
 COMMENT ON TABLE AI.CUSTOMERS_ORDERS IS
@@ -370,19 +389,38 @@ COMMENT ON COLUMN AI.CUSTOMERS_ORDERS.PREFERRED_CARD IS
 'Identificador de la tarjeta preferida del cliente.';
 ```
 
-Cuando termine la configuración, haga clic en **App Builder** y después en **Import**.
+### **➡️ Importar la aplicación APEX de Select AI**
+
+Con los comentarios ya creados, finaliza la preparación del contexto que usará Select AI. A continuación, importará la aplicación APEX que permitirá probar las preguntas en lenguaje natural desde una interfaz web.
+
+Abra **App Builder** y haga clic en **Import**.
 
 ![apex06](images/apex06.png)
 
-Descargue el archivo https://raw.githubusercontent.com/caiogusto2/workshop-dataplatform/main/autonomousdb/app_apex/selectai.zip y cárguelo en el formulario. Haga clic en **Next**, luego en **Import Application**, nuevamente en **Next**, después en **Install Supporting Objects** y, por último, en **Run Application**.
+Para importar la aplicación, siga estos pasos:
+
+1. Descargue el archivo https://raw.githubusercontent.com/caiogusto2/workshop-dataplatform/main/autonomousdb/app_apex/selectai.zip.
+2. Cargue el archivo `selectai.zip` en el formulario de importación.
+3. Haga clic en **Next**.
+4. Haga clic en **Import Application**.
+5. Haga clic nuevamente en **Next**.
+6. Haga clic en **Install Supporting Objects**.
+7. Por último, haga clic en **Run Application**.
+
+<details>
+  <summary><strong>¿Necesita ayuda con la importación?</strong></summary>
+
+  <p>Si se pierde durante el asistente de importación, abra esta ayuda y siga la secuencia visual paso a paso.</p>
+  <img src="images/image-importapp.png" alt="Paso a paso para importar la aplicación APEX de Select AI" />
+</details>
 
 ![apex08](images/apex08.png)
 
-El usuario será `AI` y la contraseña será `WORKSHOPsec2019##`.
+Cuando la aplicación solicite credenciales, ingrese con el usuario `AI`. Si siguió la contraseña sugerida en este laboratorio, use `WORKSHOPsec2019##`.
 
 ![apex09](images/apex09.png)
 
-Seleccione `OCI_GENAI` y cierre el cuadro de selección con la **x**.
+Cuando aparezca el selector de perfil de Select AI, elija `OCI_GENAI`. Después cierre el cuadro de selección con la **x** para continuar en la aplicación.
 
 ![apex10](images/apex10.png)
 
@@ -397,11 +435,11 @@ Otras preguntas que puede realizar:
 
 ## **4️⃣ Configurar y probar ORDS**
 
-De regreso en **APEX**, primero configuraremos Data Redaction para la columna de correo electrónico de la tabla `CUSTOMERS_ORDERS`. Haga clic en **SQL Commands**.
+De regreso en **APEX**, configuraremos Data Redaction para proteger la columna de correo electrónico de la tabla `CUSTOMERS_ORDERS`. Abra **SQL Commands** para ejecutar la política de redacción.
 
 ![apex12](images/apex12.png)
 
-Copie y pegue el comando siguiente.
+Copie y pegue el comando siguiente para crear la política `REDACT_CUST_EMAIL_ORDS` sobre la columna `CUST_EMAIL`.
 
 ``` sql
 BEGIN
@@ -425,19 +463,19 @@ select cust_first_name, cust_last_name, cust_email from customers_orders;
 
 ![apex13](images/apex13.png)
 
-Ahora haga clic en la pestaña **RESTful Services**.
+Después de validar el acceso con el usuario `AI`, abra la pestaña **RESTful Services** para publicar la consulta como endpoint REST.
 
 ![apex14](images/apex14.png)
 
-Haga clic en **Modules > Create Module**, asigne el nombre `api` y la ruta base (base path) `v1`.
+En **RESTful Services**, haga clic en **Modules > Create Module**. Asigne el nombre `api` y la ruta base (base path) `v1`.
 
 ![apex15](images/apex15.png)
 
-A continuación, haga clic en **Create Template** y escriba `consulta` en **URI Template**.
+Dentro del módulo `api`, haga clic en **Create Template** y escriba `consulta` en **URI Template**. Con esto, el endpoint quedará expuesto bajo la ruta `/v1/consulta`.
 
 ![apex16](images/apex16.png)
 
-A continuación, cree un manejador (handler) y escriba lo siguiente en **Source**:
+Dentro del template `consulta`, cree un manejador (handler). En **Source**, escriba la consulta SQL que devolverá los datos del endpoint:
 
 ``` sql
 select cust_first_name, cust_last_name, cust_email from customers_orders
@@ -458,7 +496,8 @@ Copie y pegue la URL en el navegador web. Verá los datos, pero el correo electr
 
 - **Autor** - Caio Oliveira
 - **Autora colaboradora** - Isabelle Anjos
-- **Última actualización** - Agosto de 2026
+- **Autor colaborador** - Jorge Galán
+- **Última actualización** - Septiembre de 2026
 
 ## 🛡️ Safe Harbor
 
